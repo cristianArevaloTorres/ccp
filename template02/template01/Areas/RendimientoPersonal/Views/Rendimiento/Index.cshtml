@@ -1,0 +1,302 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Monitoreo de Personal</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+
+<h1 class="page-title">
+    Podras monitorear el rendimiento de tus empleados
+    <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+<!-- BEGIN CONTENT HEADER -->
+
+<input type="hidden" id="proceso" value="0">
+
+
+
+<div class="row margin-bottom-25 about-author">
+    <div class="col-lg-12 col-xs-12 col-sm-12">
+        <div class="portlet light " style="opacity:0.80;">
+            <div class="table table-striped table-hover table-checkable order-column dataTable">
+                <div class="row">
+
+
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong>Nombre del empleado</strong> </div>
+
+                        <div class="col-md-12"> Cristian Arevalo Torres</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong>Actividades</strong> </div>
+
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover table-checkable order-column dataTable" style="width: 100%" id="tabla_Results">
+                                <tbody>
+
+                                    <tr>
+                                        <td><h5>Diseño del modulo de empleados</h5></td>
+                                        <td><span class="label label-warning">PENDIENTE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Diseño del modulo de Areas</h5></td>
+                                        <td><span class="label label-info">EN PROCESO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Diseño del modulo de empleados</h5></td>
+                                        <td><span class="label label-success">HECHO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Construccion del back del modulo de empleados</h5></td>
+                                        <td><span class="label label-success">HECHO</span></td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong> Informe de Rendimiento</strong> </div>
+
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-green-sharp">
+                                                    <span data-counter="counterup" data-value="78">78</span>
+
+                                                </h3>
+                                                <small>Hecho</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-red-haze">
+                                                    <span data-counter="counterup" data-value="13">13</span>
+                                                </h3>
+                                                <small>Detenidas</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-blue-sharp">
+                                                    <span data-counter="counterup" data-value="5">5</span>
+                                                </h3>
+                                                <small>Enproceso</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-yellow-soft">
+                                                    <span data-counter="counterup" data-value="2">2</span>
+                                                </h3>
+                                                <small>Pendientes</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+
+
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong>Nombre del empleado</strong> </div>
+
+                        <div class="col-md-12">Andrea Barrera Angeles</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong>Actividades</strong> </div>
+
+                        <div class="col-md-12">
+                            <table class="table table-striped table-hover table-checkable order-column dataTable" style="width: 100%" id="tabla_Results">
+                                <tbody>
+
+                                    <tr>
+                                        <td><h5>Diseño del modulo de empleados</h5></td>
+                                        <td><span class="label label-warning">PENDIENTE</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Diseño del modulo de Areas</h5></td>
+                                        <td><span class="label label-info">EN PROCESO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Diseño del modulo de empleados</h5></td>
+                                        <td><span class="label label-success">HECHO</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5>Construccion del back del modulo de empleados</h5></td>
+                                        <td><span class="label label-success">HECHO</span></td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12"> <strong> Informe de Rendimiento</strong> </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-green-sharp">
+                                                    <span data-counter="counterup" data-value="78">78</span>
+
+                                                </h3>
+                                                <small>Hecho</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-red-haze">
+                                                    <span data-counter="counterup" data-value="13">13</span>
+                                                </h3>
+                                                <small>Detenidas</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-blue-sharp">
+                                                    <span data-counter="counterup" data-value="5">5</span>
+                                                </h3>
+                                                <small>Enproceso</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat2 ">
+                                        <div class="display">
+                                            <div class="number">
+                                                <h3 class="font-yellow-soft">
+                                                    <span data-counter="counterup" data-value="2">2</span>
+                                                </h3>
+                                                <small>Pendientes</small>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="icon-pie-chart"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+</script>
+
+
+<!-- END CONTENT HEADER -->
+<!-- BEGIN CARDS -->
+<!-- END CARDS -->
+<!-- BEGIN TEXT & VIDEO -->
+<!-- END TEXT & VIDEO -->
+<!-- BEGIN MEMBERS SUCCESS STORIES -->
+<!-- END MEMBERS SUCCESS STORIES -->
+<!-- BEGIN LINKS BLOCK -->
+<!-- END LINKS BLOCK -->

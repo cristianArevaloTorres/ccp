@@ -1,0 +1,244 @@
+﻿@using Senado.Convocatoria.Helpers;
+@using Senado.Convocatoria.Areas.AsignacionValidador.Models;
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Content/Senado.Convocatoria/Global/Plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/Scripts/plugins/jquery.nestable.js"></script>
+<link href="~/Content/Senado.Convocatoria/Global/Plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/Content/Senado.Convocatoria/Global/Plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/Senado.Convocatoria/Global/Plugins/select2/js/select2.full.min.js"></script>
+<script src="~/Scripts/Senado.Convocatoria/pages/scripts/components-select2.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Content/Senado.Convocatoria/Global/Plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script src="~/Content/Senado.Convocatoria/Global/Plugins/datatables/datatables.min.js"></script>
+<script src="~/Scripts/bootbox.min.js"></script>
+
+
+<div class="page-content">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                @Html.ActionLink("Home", "", "")
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Validador</span>
+            </li>
+        </ul>
+    </div>
+    <br />
+
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-blue-dark sbold uppercase">Validador</span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="form-horizontal">
+
+                <div class="col-lg-3">
+                    <div class="mt-widget-1">
+
+                        <div class="mt-img">
+                            <i class="icon-user"></i>
+                        </div>
+                        <div class="mt-body">                  
+                            <h3 class="mt-username">@ViewBag.Nombre</h3>
+                            <p class="mt-user-title">Validador</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+
+                    <div class="portlet-body" id="replacetarget">
+                        @{ Html.RenderAction("_listAspirantes", "Validador"); }
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="portlet-body">
+            <div class="portlet-body">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="label hidden" id="bdisponibleP">
+    0
+</div>
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+              
+            });
+           
+
+    function Recargar(tipo, idUsuario) {
+          $('#replacetarget').load('@Url.Action("_listAspirantes", "Validador")',
+                                    {
+                                        estatus: tipo,
+                                        idUsuario: idUsuario
+                                    },
+                                    function (responseTxt, statusTxt, xhr) {
+                                        if (statusTxt == "success") {
+                                        }
+                                    });
+    }
+    function CambiarEstatus(tipo, idUsuario) {
+
+    var modal = bootbox.dialog(
+        {
+            message:'<div class="cobclass" > </div>',
+            onEscape: setTimeout(function () { insertarCombo(tipo, idUsuario); }, 1000 ),
+            title: "Debe Elegir Estatus",
+            buttons: [
+                {
+                    label: "Guardar",
+                    className: "btn green btn-sm btn-outline pull-left",
+                    callback: function () {
+                        var tipoEstatus = $("#cboEstatus").val().replace(" ", "").toLowerCase();
+                        var observaciones = $("#txtcomentario").val();
+                        if (tipoEstatus == "aprobado" || tipoEstatus == "rechazado") {
+                            if (observaciones.length == 0) {
+                                alert("Escriba las observaciones para continuar");
+                                return false;
+                            }
+
+                        }
+                            $.post("@Url.Action("guardarestatus", "Validador")",
+                            {
+                                idValidador: '10',//aqui va el id del validador ,
+                                idAspirante: idUsuario,
+                                idAdministrador: '4',
+                                estatus: tipoEstatus,
+                                observaciones: observaciones
+                            },
+                            function (data) { })
+                            .done(function (response) {
+
+                                Recargar(tipo, 10);
+                            })
+                            .fail(function (response) {
+
+                                Recargar(tipo, 10);
+                            });
+                    }
+                },
+                {
+                    label: "Cerrar",
+                    className: "btn red btn-sm btn-outline pull-left",
+                    callback: function () {
+                        //   Buscar();
+                        //  break;
+                        //  return false;
+                        console.log("just do something on close");
+                    }
+                }
+            ],
+            show: false,
+            onEscape: function () { modal.modal("hide"); }
+        });
+
+    modal.modal("show");
+    }
+
+            function insertarCombo(estatus, idUsuario) {
+      
+
+
+        $.post("@Url.Action("_estatus", "Validador")",
+             {
+                 estatus: estatus
+             },
+
+        function (data) {
+            var content = JSON.parse(data);
+
+            var opciones = "";
+            for (var i = 0; i < content.length; i++) {
+                console.log("" + content[i].Text);
+                opciones = opciones + ' <option value= "' + content[i].Text +'">' + content[i].Text + '</option> ';
+
+            }
+
+            $(" .cobclass").html('    <div class="form-group"> ' +
+                '<div class="Label"> Estatus </div> '+
+            '    <select onchange="cambiaestatus()" id="cboEstatus" class="form-control" > ' +
+            opciones +
+            '    </select> ' +
+                '</div >'
+
+             //   + '<input id="txtcomentario" class=" hidden form-control form-control-sm" type="text" placeholder="Observaciones...">'
+                + '<textarea id="txtcomentario" class=" hidden" type="text" rows="25" cols="50"></textarea>'
+
+            );
+
+            var tipoEstatus = $("#cboEstatus").val().replace(" ", "").toLowerCase();
+            if (tipoEstatus == "aprobado" || tipoEstatus == "rechazado") {
+
+                $("#txtcomentario").removeClass("hidden");
+
+            }
+            else {
+                $("#txtcomentario").addClass("hidden");
+            }
+        })
+            .done(function (response) {
+                var idUsuario2 = idUsuario;
+                           $.post("@Url.Action("obtieneObservaciones", "Validador")",
+                            {
+                                idAspirante: idUsuario2
+
+                            },
+                               function (data1) {
+                                   $("#txtcomentario").val(data1);
+                                   console.log("comentarios:" + data1);
+
+                               })
+                            .done(function (response1) {
+
+                            })
+                            .fail(function (response1) {
+
+
+                            });
+            });
+    }
+    function cambiaestatus() {
+        var tipoEstatus = $("#cboEstatus").val().replace(" ", "").toLowerCase();
+        if (tipoEstatus == "aprobado" || tipoEstatus == "rechazado") {
+           
+            $("#txtcomentario").removeClass("hidden");
+
+        }
+        else {
+            $("#txtcomentario").addClass("hidden");
+        }
+
+    }
+
+
+
+
+
+
+
+        </script>

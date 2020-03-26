@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+}
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>*@
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" />
+<script src="~/assets/global/plugins/select2/js/select2.full.min.js"></script>
+<script src="~/assets/pages/scripts/components-select2.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Consulta Clientes</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <img src="~/assets/pages/img/banners/office-336368_1920.jpg" />
+    </div>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+
+
+
+<body>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="glyphicon glyphicon-qrcode font-blue-steel"></i> <span class="caption-subject font-blue-steel sbold">
+                    Asignar Recetas/Comidas
+                </span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="portlet box grey-sharp">
+                <div style="height: 15px" class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>
+                    </div>
+
+                </div>
+                <div id="bodyFiltro" style="" class="portlet-body">
+
+
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group form-md-line-input ">
+                                        <input type="text" class="form-control" id="idnombre" placeholder="">
+                                        <label for="form_control_1">¿Cual es su nombre?</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-md-line-input ">
+                                        <input type="text" class="form-control" id="idapellidop" placeholder="">
+                                        <label for="form_control_1">¿Cual es su apellido paterno?</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <select id="idpersonas" class="form-control select2">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                  
+                               
+                            </div>
+
+                        </div>
+                        <input class="btn btn-black btn-block "
+                               onclick="BuscarCliente()" id="idbuscar"
+                               type="button" value="Buscar" />
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="container">
+                <!-- Trigger the modal with a button -->
+                <!-- Modal -->
+
+
+
+
+
+
+            </div>
+            <div class="portlet-body" id="_ListRegistros"></div>
+
+        </div>
+    </div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        alert("se cargo completo el documento ");
+        $("#idpersonas").select2("val", "0");
+
+        $("#idpersonas").select2({
+            placeholder: "Selecione una opcion",
+            val: "nuevo",
+            width: 200,
+            allowClear: true,
+
+        });
+        alert("se cargo completo el select2 ");
+      });
+
+</script>
+
+
+<!-- END CONTENT HEADER -->
+<!-- BEGIN CARDS -->
+<!-- END CARDS -->
+<!-- BEGIN TEXT & VIDEO -->
+<!-- END TEXT & VIDEO -->
+<!-- BEGIN MEMBERS SUCCESS STORIES -->
+<!-- END MEMBERS SUCCESS STORIES -->
+<!-- BEGIN LINKS BLOCK -->
+<!-- END LINKS BLOCK -->

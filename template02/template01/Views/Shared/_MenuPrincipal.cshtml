@@ -1,0 +1,127 @@
+﻿@model IEnumerable<GrupoFormula.Polanco.WebUI.GrupoMenuUIModel>
+
+@if (Model != null)
+{
+    <!-- BEGIN SIDEBAR -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    @*<div class="page-sidebar-wrapper">*@
+        @*<div class="page-sidebar navbar-collapse collapse">*@
+            <!-- BEGIN SIDEBAR MENU -->
+            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+            <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="true" data-auto-scroll="false" data-slide-speed="200" style="padding-top: 20px">
+                <li class="sidebar-toggler-wrapper hide">
+                    <div class="sidebar-toggler">
+                        <span></span>
+                    </div>
+                </li>
+                <li class="sidebar-search-wrapper">
+                    <form class="sidebar-search  " action="page_general_search_3.html" method="POST">
+                        <a href="javascript:;" class="remove">
+                            <i class="icon-close"></i>
+                        </a>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <a href="javascript:;" class="btn submit">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                <li class="heading">
+                    <h3 class="uppercase" style="font-size:.8em;">@Html.DisplayFor(modelItem => Model.ElementAt(i).Nombre)</h3>
+                    
+                </li>
+
+                    if (Model.ElementAt(i).Predeterminado == false)
+                    {
+                        for (int j = 0; j < (Model.ElementAt(i).Modulos == null ? 0 : Model.ElementAt(i).Modulos.Count()); j++)
+                        {
+                            <li class="nav-item open"  id="@Html.DisplayFor(modelItem => Model.ElementAt(i).Nombre).ToString().ToLower()" >
+                                <a @*href="javascript:;"*@ class="nav-link nav-toggle">
+                                    <i class=@Model.ElementAt(i).Modulos.ElementAt(j).Icono></i>
+                                    <span class="title" style="font-size:.8em;">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Nombre)</span>
+                                    <span class="arrow"></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    @for (int k = 0; k < (Model.ElementAt(i).Modulos.ElementAt(j).Procesos == null ? 0 : Model.ElementAt(i).Modulos.ElementAt(j).Procesos.Count()); k++)
+                                    {
+                                        <li class="nav-item " id="@Url.Action(Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Accion, Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Controlador, new { Area = Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Area })">
+                                            <a href="@Url.Action(Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Accion, Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Controlador, new { Area = Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Area })" class="nav-link ">
+                                                <span class="title" style="font-size:.8em;">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Nombre)</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    else if (Model.ElementAt(i).Predeterminado == true)
+                    {
+                        for (int j = 0; j < (Model.ElementAt(i).Modulos == null ? 0 : Model.ElementAt(i).Modulos.Count()); j++)
+                        {
+                            if (Model.ElementAt(i).Modulos.ElementAt(j).Predeterminado == true)
+                            {
+                                <li class="nav-item start active open">
+                                @*<li class="nav-item active open">*@
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-home"></i>
+                                        <span class="title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Nombre)</span>
+                                        <span class="selected"></span>
+                                        <span class="arrow open"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        @for (int k = 0; k < (Model.ElementAt(i).Modulos.ElementAt(j).Procesos == null ? 0 : Model.ElementAt(i).Modulos.ElementAt(j).Procesos.Count()); k++)
+                                        {
+                                            <li class="nav-item start active open">
+                                            @*<li class="nav-item active open">*@
+                                                <a href="@Url.Action(Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Accion, Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Controlador, new { Area = Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Area })" class="nav-link ">
+                                                    <i class=@Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Icono></i>
+                                                    <span class="title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Nombre)</span>
+                                                    <span class="selected"></span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item open">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-diamond"></i>
+                                        <span class="title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Nombre)</span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        @for (int k = 0; k < (Model.ElementAt(i).Modulos.ElementAt(j).Procesos == null ? 0 : Model.ElementAt(i).Modulos.ElementAt(j).Procesos.Count()); k++)
+                                        {
+                                            <li class="nav-item">
+                                                <a href="@Url.Action(Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Accion, Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Controlador, new { Area = Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Area })" class="nav-link ">
+                                                    <span class="title">@Html.DisplayFor(modelItem => Model.ElementAt(i).Modulos.ElementAt(j).Procesos.ElementAt(k).Nombre)</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
+                }
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        @*</div>*@
+    @*</div>*@
+    <!-- END SIDEBAR -->
+}
+
