@@ -1,22 +1,21 @@
-﻿@{
+﻿<!DOCTYPE html>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 
 
 }
-@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>*@
-<script src="~/Scripts/jquery-ui.min.js"></script>
-<link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
-<link href="~/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" />
-<link href="~/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" />
-<script src="~/assets/global/plugins/select2/js/select2.full.min.js"></script>
-<script src="~/assets/pages/scripts/components-select2.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ejemplos con Select2</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/select2.css" rel="stylesheet" />
 
+    <link href="~/css/select2-bootstrap.css" rel="stylesheet" />
 
-<!-- BEGIN PAGE BAR -->
+</head>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -28,14 +27,9 @@
         </li>
     </ul>
     <div class="page-toolbar">
-        <img src="~/assets/pages/img/banners/office-336368_1920.jpg" />
+        <img src="~/assets/pages/img/banners/people-2562212_1920.jpg" />
     </div>
 </div>
-<!-- END PAGE BAR -->
-<!-- BEGIN PAGE TITLE-->
-
-
-
 <body>
     <div class="portlet light bordered">
         <div class="portlet-title">
@@ -74,14 +68,92 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <select id="idpersonas" class="form-control select2">
+                                    <select id="idpersonas" class="form-control select2-dropdown">
                                         <option>Mustard</option>
                                         <option>Ketchup</option>
                                         <option>Relish</option>
                                     </select>
                                 </div>
-                                  
-                               
+                                <div class="col-md-4">
+                                    <select id="idpers2onas" class="form-control select2-container--bootstrap">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-group select2-bootstrap-append select2-bootstrap-prepend input-large">
+                                        <div class="input-group-addon">$</div>
+                                        <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                            <option></option>
+                                            <optgroup label="Alaskan">
+                                                <option value="AK">Alaska</option>
+                                                <option value="HI" disabled="disabled">Hawaii</option>
+                                            </optgroup>
+                                            <optgroup label="Pacific Time Zone">
+                                                <option value="CA">California</option>
+                                                <option value="NV">Nevada</option>
+                                                <option value="OR">Oregon</option>
+                                                <option value="WA">Washington</option>
+                                            </optgroup>
+                                            <optgroup label="Mountain Time Zone">
+                                                <option value="AZ">Arizona</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="ID">Idaho</option>
+                                                <option value="MT">Montana</option>
+                                                <option value="NE">Nebraska</option>
+                                                <option value="NM">New Mexico</option>
+                                                <option value="ND">North Dakota</option>
+                                                <option value="UT">Utah</option>
+                                                <option value="WY">Wyoming</option>
+                                            </optgroup>
+                                            <optgroup label="Central Time Zone">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="IL">Illinois</option>
+                                                <option value="IA">Iowa</option>
+                                                <option value="KS">Kansas</option>
+                                                <option value="KY">Kentucky</option>
+                                                <option value="LA">Louisiana</option>
+                                                <option value="MN">Minnesota</option>
+                                                <option value="MS">Mississippi</option>
+                                                <option value="MO">Missouri</option>
+                                                <option value="OK">Oklahoma</option>
+                                                <option value="SD">South Dakota</option>
+                                                <option value="TX">Texas</option>
+                                                <option value="TN">Tennessee</option>
+                                                <option value="WI">Wisconsin</option>
+                                            </optgroup>
+                                            <optgroup label="Eastern Time Zone">
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
+                                                <option value="IN">Indiana</option>
+                                                <option value="ME">Maine</option>
+                                                <option value="MD">Maryland</option>
+                                                <option value="MA">Massachusetts</option>
+                                                <option value="MI">Michigan</option>
+                                                <option value="NH">New Hampshire</option>
+                                                <option value="NJ">New Jersey</option>
+                                                <option value="NY">New York</option>
+                                                <option value="NC">North Carolina</option>
+                                                <option value="OH">Ohio</option>
+                                                <option value="PA">Pennsylvania</option>
+                                                <option value="RI">Rhode Island</option>
+                                                <option value="SC">South Carolina</option>
+                                                <option value="VT">Vermont</option>
+                                                <option value="VA">Virginia</option>
+                                                <option value="WV">West Virginia</option>
+                                            </optgroup>
+                                        </select><span class="select2 select2-container select2-container--bootstrap select2-container--below select2-container--focus" dir="ltr"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-c31b-container"><span class="select2-selection__rendered" id="select2-c31b-container"><span class="select2-selection__placeholder">Select a State</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <div class="input-group-addon">.00</div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
 
                         </div>
@@ -109,42 +181,41 @@
     </div>
 
 
+    <form id="form1" runat="server">
+        <div class="container">
+            <hr />
+            <select id="ddlCiudades" class="form-control">
+                <option></option>
+                <option value="LI">Lima</option>
+                <option value="PI">Piura</option>
+                <option value="TRU">Trujillo</option>
+                <option value="CHI">Chiclayo</option>
+                <option>Tacna</option>
+            </select>
+        </div>
+    </form>
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/select2_locale_es.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ddlCiudades").select2({
+                placeholder: "Seleccione una cuidad...",
+                allowClear: true,
+                //minimumInputLength: 3,
+                formatResult: format,
+                formatSelection: format,
+                escapeMarkup: function (m) { return m; }
+            });
+        });
+
+        function format(ciudad) {
+            //alert('ID:' + ciudad.id + ' - Nombre:' + ciudad.text );
+            return '<span style="color:red;"><b>' + ciudad.id + '</b></span>: ' + ciudad.text;
+
+        }
+    </script>
 </body>
 
-
-
-
-
-
-
-
-
-
-
-<script>
-    $(document).ready(function () {
-        alert("se cargo completo el documento ");
-        $("#idpersonas").select2("val", "0");
-
-        $("#idpersonas").select2({
-            placeholder: "Selecione una opcion",
-            val: "nuevo",
-            width: 200,
-            allowClear: true,
-
-        });
-        alert("se cargo completo el select2 ");
-      });
-
-</script>
-
-
-<!-- END CONTENT HEADER -->
-<!-- BEGIN CARDS -->
-<!-- END CARDS -->
-<!-- BEGIN TEXT & VIDEO -->
-<!-- END TEXT & VIDEO -->
-<!-- BEGIN MEMBERS SUCCESS STORIES -->
-<!-- END MEMBERS SUCCESS STORIES -->
-<!-- BEGIN LINKS BLOCK -->
-<!-- END LINKS BLOCK -->
+</html>

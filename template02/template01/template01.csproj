@@ -4862,7 +4862,20 @@
     <Content Include="assets\pages\img\background\7.jpg" />
     <Content Include="assets\pages\img\background\8.jpg" />
     <Content Include="assets\pages\img\background\9.jpg" />
+    <Content Include="assets\pages\img\banners\architecture-3121009_1920.jpg" />
+    <Content Include="assets\pages\img\banners\girl-3253532_1920.jpg" />
     <Content Include="assets\pages\img\banners\office-336368_1920.jpg" />
+    <Content Include="assets\pages\img\banners\panorama-2117310_1920.jpg" />
+    <Content Include="assets\pages\img\banners\people-2562212_1920.jpg" />
+    <Content Include="assets\pages\img\banners\picnic-1208229_1920.jpg" />
+    <Content Include="assets\pages\img\banners\road-863662_1920.jpg" />
+    <Content Include="assets\pages\img\banners\run-1749410_1920.jpg" />
+    <Content Include="assets\pages\img\banners\runner-4800810_1920.jpg" />
+    <Content Include="assets\pages\img\banners\sport-2264825_1920.jpg" />
+    <Content Include="assets\pages\img\banners\street-4942809_1920.jpg" />
+    <Content Include="assets\pages\img\banners\sunset-3875817_1920.jpg" />
+    <Content Include="assets\pages\img\banners\urban-438393_1920.jpg" />
+    <Content Include="assets\pages\img\banners\woman-865021_1920.jpg" />
     <Content Include="assets\pages\img\bg-opacity.png" />
     <Content Include="assets\pages\img\bg-white-lock.png" />
     <Content Include="assets\pages\img\bg-white.png" />
@@ -5280,6 +5293,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\select2-bootstrap.css" />
+    <Content Include="css\select2-spinner.gif" />
+    <Content Include="css\select2.css" />
+    <Content Include="css\select2.png" />
+    <Content Include="css\select2x2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -5395,8 +5414,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui.min.css" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\LICENSE.txt" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\select2_locale_es.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
