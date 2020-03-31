@@ -58,6 +58,26 @@ namespace YCP_DATA
         public int edad { get; set; }
 
     }
+    public class consultacliente
+    {
+        public int idusuario { get; set; }
+        public string vtipo { get; set; }
+        public string nombre { get; set; }
+        public string apellidoP { get; set; }
+        public string apellidoM { get; set; }
+        public string correo { get; set; }
+        public string usuario { get; set; }
+        public string vrazon { get; set; }
+        public string vigenciaini { get; set; }
+        public string vigenciafin { get; set; }
+        public int diasrest { get; set; }
+        public string registro { get; set; }
+
+        public string anual { get; set; }
+        public string mensual { get; set; }
+        public int edad { get; set; }
+
+    }
     public class recetas10
     {
         public int idreceta { get; set; }
@@ -67,7 +87,10 @@ namespace YCP_DATA
     {
         public int idreceta { get; set; }
         public int idalimentos { get; set; }
-       
+        public string descripcion { get; set; }
+        public int idRegistro { get; set; }
+        
+
     }
 
     public class Alimentos12
