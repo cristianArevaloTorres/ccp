@@ -1,224 +1,133 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-@section PageLevelHeader {
-    <link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
 }
 
 
-<!-- BEGIN PAGE BAR -->
-<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <a href="index">Home</a>
-            <i class="fa fa-circle"></i>
-        </li>
-        <li>
-            <span>Alimentador de Conocimiento</span>
-        </li>
-    </ul>
-    <div class="page-toolbar">
-        <div class="btn-group pull-right">
-            <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown">
-                Actions
-                <i class="fa fa-angle-down"></i>
-            </button>
-        </div>
-    </div>
-</div>
-<!-- END PAGE BAR -->
-<!-- BEGIN PAGE TITLE-->
-
-<h1 class="page-title">
-    Nuestra Inteligencia artificial te ayudara a optimizar tus procesos
-    <small>Estamos Listos...</small>
-</h1>
-<!-- END PAGE TITLE-->
-<!-- END PAGE HEADER-->
-<!-- BEGIN CONTENT HEADER -->
-
-<input type="hidden" id="proceso" value="0">
-<div class="row margin-bottom-25 about-header">
-    <div class="col-lg-12 col-xs-12 col-sm-12">
-        <div class="portlet light " style="opacity:0.80;">
-            <div class="row margin-bottom-20 stories-cont">
-                <div class="col-lg-12">
-                    <div class="portlet light">
-                        <div class="photo">
-                            <img src="../assets/pages/media/users/teambg2.jpg" alt="" class="img-responsive" />
-                        </div>
-                        <div class="title">
-                            <span>Asistente Virtual</span>
-                        </div>
-                        <div class="desc" id="asistenteVirtual">
-                            <span>Hola soy Elai , sere tu asistente personal</span>
-
-                        </div>
-                        <div id="menuAlimentador2" class="hidden">
-                            <a href="javascript:;" class="icon-btn">
-                                <i class="fa fa-group"></i>
-                                <div>Agregar Empleados</div>
-                                <span class="badge badge-info"> 12 </span>
-                            </a>
-                            <a href="javascript:;" class="icon-btn">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <div>Asignar Actividad a empleados</div>
-                                <span class="badge badge-info"> 12 </span>
-                            </a>
-                            <a href="javascript:;" class="icon-btn">
-                                <i class="fa fa-sitemap"></i>
-                                <div>Agregar Actividad</div>
-                                <span class="badge badge-info"> 12 </span>
-                            </a>
-                            <a href="javascript:;" class="icon-btn">
-                                <i class="fa fa-calendar"></i>
-                                <div>Generar Cuenta empleados</div>
-                                <span class="badge badge-info"> 12 </span>
-                            </a>
-
-                            <a href="javascript:;" class="icon-btn">
-                                <i class="fa fa-globe"></i>
-                                <div> Agregar Area/departamento </div>
-                            </a>
-                        </div>
-                        <br />
-                        <input class="btn blue-madison"
-                               type="button" onclick="siguiente()" value="Deacuerdo" />
-                    </div>
-                </div>
-
-            </div>
-         
-        </div>
-    </div>
-</div>
-
-
-
-
-<script>
-    function siguiente() {
-        var proceso = $("#proceso").val();
-
-        if (proceso == "0") {
-            $("#asistenteVirtual").html("");
-            $("#asistenteVirtual").html(" <span>La funcion de cada asistente es ir aprendiendo, asi que te hare unas preguntas con el fin de generarte respuestas lo mas esactas posibles </span>");
-            console.log("entro al final");
-            $("#proceso").val("1");
-
-        }
-        //pregunta como se llama el area o direccion ala que pertenece
-        if (proceso == "1") {
-            $("#asistenteVirtual").html("");
-            $("#asistenteVirtual").html(" <span>Cual es el nombre del Area y/o departamento al que pertenecen los empleados que estan a tu cargo , si son varias areas no te preocupes,vas a poder agregar las que necesites cuando quieras , para esta ocasion solo necesito un area</span>  <input type='text' id='AreaTxt' class='form - control' >");
-            console.log("entro al final");
-            $("#proceso").val("2");
-        }
-        //agregar empleados
-        if (proceso == "2") {
-            var areaIA = $("#AreaTxt").val();
-            $("#asistenteVirtual").html("");
-            $("#asistenteVirtual").html(" <span>Necesitamos agregar algunos empleados al area:" + areaIA + " , no te preocupes si no agregas todos , vas a poder agregar mas empleados cuando quieras.</span>  <input type='text' id='AreaTxt' class='form - control' >");
-            console.log("entro al final");
-            $("#proceso").val("3");
-        }
-        if (proceso == "3") {
-            var areaIA = $("#AreaTxt").val();
-            $("#asistenteVirtual").html("");
-            $("#asistenteVirtual").html(" <span>Necesitamos agregar alguna de las actividades que hacen tus empleados , no importa si no agregas todas las actividades ,vas a poder agregar las actividades que necesites cuando quieras </span>  <input type='text' id='AreaTxt' class='form - control' >");
-            console.log("entro al final");
-            $("#proceso").val("4");
-        }
-        if (proceso == "4") {
-            var areaIA = $("#AreaTxt").val();
-            $("#asistenteVirtual").html("");
-            $("#asistenteVirtual").html(" <span>Este es el alimentador de conocimiento , podras agregar lo que necesites.</span>  <input type='text' id='AreaTxt' class='form - control' >");
-            console.log("entro al final");
-            $("#proceso").val("4");
-            $("#menuAlimentador").removeClass("hidden");
-        }
-
-
-
-
+@*@{
+        var idioma = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
     }
 
-</script>
+    @helper selected(string c, string idioma)
+    {
+    if (c == idioma)
+    {
+            @:checked="checked"
+        }
+    }*@
 
 
-<!-- END CONTENT HEADER -->
-<!-- BEGIN CARDS -->
-<div id="menuAlimentador" class="row margin-bottom-20 hidden">
-    <div class="col-lg-3 col-md-6">
-        <div class="portlet light">
-            <div class="card-icon">
-                <i class="icon-user-follow font-red-sunglo theme-font"></i>
-            </div>
-            <div class="card-title">
-                <span>Agregar Empleados</span>
-            </div>
-            <div class="card-desc">
-                <span>
-                    desx
-                </span>
+<div class="content">
+
+    <!-- BEGIN LOGIN FORM -->
+    @*<form class="login-form" action="Index" method="post">*@
+    <form class="login-form" method="post">
+        <img style="width:150px; height:150px; align-content:center" src="~/Images/Polanco/17-170276_logo-bodybuilding-physical-fitness-body-fitness-logo-hd.png" />
+        <br />
+        <h2 class="form-title">Tu Couch  Personal</h2>
+        <h3 class="form-title">Acceder</h3>
+
+
+        <div class="alert alert-danger display-hide" style="@TempData["estilo"]">
+            <button class="close" data-close="alert"></button>
+            @if (TempData["estilo"] != null)
+            {
+                <span>@TempData["error"]</span>
+            }
+            else
+            {
+                <span>Favor de ingresar su Usuario y Contraseña.</span>
+            }
+        </div>
+        <div class="form-group">
+
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Usuario</label>
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Usuario" name="username" />
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="portlet light">
-            <div class="card-icon">
-                <i class="icon-trophy font-green-haze theme-font"></i>
-            </div>
-            <div class="card-title">
-                <span>Agregar Areas/Departamentos</span>
-            </div>
-            <div class="card-desc">
-                <span>
-                    x
-                    <br> 1
-                </span>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Contraseña</label>
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Contraseña" name="password" />
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="portlet light">
-            <div class="card-icon">
-                <i class="icon-basket font-purple-wisteria theme-font"></i>
+
+        <div class="form-actions">
+            <div class="col-lg-6">
+                <button id="btningresa" onclick="ingresar()" type="button" class="btn purple">
+                    Ingresar
+                </button>
+
             </div>
-            <div class="card-title">
-                <span>Asignar Actividades a empleados </span>
-            </div>
-            <div class="card-desc">
-                <span>
-                   X
-                    <br> 1
-                </span>
+            <div class="col-lg-6">
+                @Html.ActionLink("Registrarse", "Index", "Registrarse", new { correo = 0 }, new { @class = "btn green pull-right" })
             </div>
         </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="portlet light">
-            <div class="card-icon">
-                <i class="icon-layers font-blue theme-font"></i>
+
+
+
+    </form>
+    <script>
+        function ingresar() {
+            alert("listo para ingresa");
+                   $.ajax({
+            type: 'GET',
+            url: "@Url.Action("Principal", "Login")",
+            //data: { idunidadnegocio: val },
+            success: function (response) {
+
+                alert("termino");
+            },
+            error: function (result) {
+                alert("" + result);
+            }
+        });
+        }
+             function validarUsuario() {
+            alert("listo para ingresa");
+                   $.ajax({
+            type: 'GET',
+            url: "@Url.Action("ValidarUser", "Login")",
+            //data: { idunidadnegocio: val },
+            success: function (response) {
+
+                alert("respuuesta termino" + response);
+            },
+            error: function (result) {
+                alert("" + result);
+            }
+        });
+        }
+    </script>
+    <!-- END LOGIN FORM  fonfdo-->
+    @*<div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(/metronic/themes/metronic/theme/default/demo8/dist/assets/media/bg/bg-4.jpg);">
+            <div class="kt-grid__item">
+                <a href="#" class="kt-login__logo">
+                    <img src="/metronic/themes/metronic/theme/default/demo8/dist/assets/media/logos/logo-4.png">
+                </a>
             </div>
-            <div class="card-title">
-                <span>Agregar Actividades</span>
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
+                <div class="kt-grid__item kt-grid__item--middle">
+                    <h3 class="kt-login__title">Welcome to Metronic!</h3>
+                    <h4 class="kt-login__subtitle">The ultimate Bootstrap &amp; Angular 6 admin theme framework for next generation web apps.</h4>
+                </div>
             </div>
-            <div class="card-desc">
-                <span>
-                   x
-                    <br> 1
-                </span>
+            <div class="kt-grid__item">
+                <div class="kt-login__info">
+                    <div class="kt-login__copyright">
+                        © 2018 Metronic
+                    </div>
+                    <div class="kt-login__menu">
+                        <a href="#" class="kt-link">Privacy</a>
+                        <a href="#" class="kt-link">Legal</a>
+                        <a href="#" class="kt-link">Contact</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </div>*@
 </div>
-<!-- END CARDS -->
-<!-- BEGIN TEXT & VIDEO -->
-<!-- END TEXT & VIDEO -->
-<!-- BEGIN MEMBERS SUCCESS STORIES -->
 
-<!-- END MEMBERS SUCCESS STORIES -->
-<!-- BEGIN LINKS BLOCK -->
-<!-- END LINKS BLOCK -->
+

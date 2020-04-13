@@ -14,6 +14,9 @@ namespace template01.Controllers
     public class HomeController : Controller
     //AsyncController
     {
+
+
+
         public ActionResult Index()
         {
            // Class1 instanciar = new Class1(); 
@@ -57,7 +60,7 @@ namespace template01.Controllers
             return View();
         }
 
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(string correo = "", string contraseño = "")
         {
             return View();
         }
@@ -66,6 +69,8 @@ namespace template01.Controllers
         {
             return View();
         }
-        
+
+   
+
     }
 }

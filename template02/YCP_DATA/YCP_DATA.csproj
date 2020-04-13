@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadesVista.cs" />
+    <Compile Include="loginData.cs" />
     <Compile Include="YCPdata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

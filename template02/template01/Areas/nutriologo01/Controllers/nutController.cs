@@ -10,7 +10,31 @@ using YCP_DATA;
 namespace template01.Areas.nutriologo01.Controllers
 {
     public class nutController : BaseController
-    {      
+    {
+        public ActionResult _sociosasesoria()
+        {
+            string cadena = WebConfigurationManager.ConnectionStrings["YCP_BD"].ConnectionString;
+            List<YCP_DATA.usuariossocios17> _listasocios = new List<YCP_DATA.usuariossocios17>();
+            List<Models.usuariossocios17> _listasociosvista = new List<Models.usuariossocios17>();
+            Models.usuariossocios17 entidd = new Models.usuariossocios17();
+            YCPdata serv = new YCPdata();
+            _listasocios = serv.cbosocios((int)(Session["idUsuario"]), cadena);
+            foreach (var item in _listasocios)
+            {
+                entidd = new Models.usuariossocios17
+                {
+                    idUsuario = item.idUsuario,
+                    nosbres = item.nosbres,
+                    ap = item.ap,
+                    am = item.am
+                };
+                _listasociosvista.Add(entidd);
+            }
+
+            return PartialView("_sociosasesoria", _listasociosvista);
+        }
+
+
         public JsonResult insertarAlimentos(string idsocio, string idcomida, string idtipocomida, string idalimento, string vporcion, string fechacomida)
         {
             string cadena = WebConfigurationManager.ConnectionStrings["YCP_BD"].ConnectionString;
@@ -64,7 +88,7 @@ namespace template01.Areas.nutriologo01.Controllers
             List<Models.recetasAlimentos11> _listasociosvista = new List<Models.recetasAlimentos11>();
             Models.recetasAlimentos11 entidd = new Models.recetasAlimentos11();
             YCPdata serv = new YCPdata();
-            _listasocios = serv.obtienealimentos(7, idreceta, cadena);
+            _listasocios = serv.obtienealimentos((int)(Session["idUsuario"]), idreceta, cadena);
             foreach (var item in _listasocios)
             {
                 entidd = new Models.recetasAlimentos11
@@ -86,7 +110,7 @@ namespace template01.Areas.nutriologo01.Controllers
             List<Models.recetas10> _listasociosvista = new List<Models.recetas10>();
             Models.recetas10 entidd = new Models.recetas10();
             YCPdata serv = new YCPdata();
-            _listasocios = serv.obtienerecetas(7, cadena);
+            _listasocios = serv.obtienerecetas((int)(Session["idUsuario"]), cadena);
             foreach (var item in _listasocios)
             {
                 entidd = new Models.recetas10
@@ -106,7 +130,7 @@ namespace template01.Areas.nutriologo01.Controllers
             List<Models.usuariossocios17> _listasociosvista = new List<Models.usuariossocios17>();
             Models.usuariossocios17 entidd = new Models.usuariossocios17();
             YCPdata serv = new YCPdata();
-            _listasocios = serv.cbosocios(7, cadena);
+            _listasocios = serv.cbosocios((int)(Session["idUsuario"]), cadena);
             foreach (var item in _listasocios)
             {
                 entidd = new Models.usuariossocios17
@@ -130,7 +154,7 @@ namespace template01.Areas.nutriologo01.Controllers
             List<Models.consultacliente> _listasociosvista = new List<Models.consultacliente>();
             Models.consultacliente entidd = new Models.consultacliente();
             YCPdata serv = new YCPdata();
-            _listasocios = serv.consuiltaclientes(7, cadena);
+            _listasocios = serv.consuiltaclientes((int)(Session["idUsuario"]), cadena);
             foreach (var item in _listasocios)
             {
                 entidd = new Models.consultacliente

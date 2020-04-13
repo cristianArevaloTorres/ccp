@@ -1,9 +1,12 @@
 ﻿//using Senado.Convocatoria.Models;
 //using Senado.Convocatoria.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
-
+using YCP_DATA;
 
 namespace template01.Controllers
 {
@@ -23,14 +26,55 @@ namespace template01.Controllers
         //}
         public ActionResult Login()
         {
-
+            Session["idUsuario"] = null;
+            Session["nombre"] = null;
+            Session["vtipo"] = null;
+            Session["apellidoP"] = null;
+            Session["apellidoM"] = null;
+            Session["usuario"] = null;
             return View();
         }
-        public ActionResult Principal()
+
+        public JsonResult ValidarUser(string correo = "", string contraseño = "")
         {
+            string respuesta = "0";
+            try
+            {
+                string cadena = WebConfigurationManager.ConnectionStrings["YCP_BD"].ConnectionString;
+                loginData serv = new loginData();
+                List<usuariosInfo2> _listasocios = new List<YCP_DATA.usuariosInfo2>();
+                List<Models.usuariosInfo2> _listasociosvista = new List<Models.usuariosInfo2>();
+                usuariosInfo2 entidd = new usuariosInfo2();          
+                _listasocios =  serv.BuscarUsuario(correo, contraseño, cadena);
+            
+                if (_listasocios.Count > 0)
+                {
+                    //crear session 
+                    respuesta = "1";
+                    entidd = _listasocios.FirstOrDefault();
+                    Session["idUsuario"] = entidd.idusuario;
+                    Session["nombre"] = entidd.nombre;
+                    Session["vtipo"] = entidd.vtipo;
+                    Session["apellidoP"] = entidd.apellidoP;
+                    Session["apellidoM"] = entidd.apellidoM;
+                    Session["usuario"] = entidd.usuario;
+                    RedirectToAction("Principal", "Login");
+                }
+                else {
+                    respuesta = "0";
+                }
 
-            return View();
+
+            }
+            catch (Exception ex)
+            {
+
+            }            
+            return Json(respuesta, JsonRequestBehavior.AllowGet);
+
+
         }
+
 
         //[HttpPost]
         //public ActionResult Index(PaginaInicio datos)

@@ -5302,6 +5302,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Polanco\17-170276_logo-bodybuilding-physical-fitness-body-fitness-logo-hd.png" />
     <Content Include="Images\Polanco\ajax-loader.gif" />
     <Content Include="Images\Polanco\ajax-loader1.gif" />
     <Content Include="Images\Polanco\ajax-loader2.gif" />
@@ -5312,6 +5313,7 @@
     <Content Include="Images\Polanco\amarillo.png" />
     <Content Include="Images\Polanco\BanderaEEUU.png" />
     <Content Include="Images\Polanco\BanderaMexico.png" />
+    <Content Include="Images\Polanco\fitness-centre-physical-fitness-logo-work-out.jpg" />
     <Content Include="Images\Polanco\GrupoFormula.png" />
     <Content Include="Images\Polanco\grupoformula2.png" />
     <Content Include="Images\Polanco\GrupoFormulaHome.gif" />
@@ -5401,6 +5403,7 @@
     <Content Include="Areas\nutriologo01\Views\nut\_resultadobusquedaCliente.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_obtieneRecetasaltas.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_obtienealimentos.cshtml" />
+    <Content Include="Areas\nutriologo01\Views\nut\_sociosasesoria.cshtml" />
     <None Include="Properties\PublishProfiles\medium - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\medium - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\medium - Web Deploy.pubxml" />
@@ -5562,6 +5565,7 @@
     <Compile Include="Areas\Validador\Models\ValidadorModel.cs" />
     <Compile Include="Areas\Validador\ValidadorAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BienvenidoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrarseController.cs" />
@@ -6268,6 +6272,7 @@
     <Content Include="Views\Registrarse\preregistro.cshtml" />
     <Content Include="Views\Registrarse\registrocoach.cshtml" />
     <Content Include="Views\Registrarse\registronutirologo.cshtml" />
+    <Content Include="Views\Bienvenido\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
