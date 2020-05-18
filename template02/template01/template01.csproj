@@ -5404,6 +5404,10 @@
     <Content Include="Areas\nutriologo01\Views\nut\_obtieneRecetasaltas.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_obtienealimentos.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_sociosasesoria.cshtml" />
+    <Content Include="Areas\nutriologo01\Views\nut\_obtienelcientesAsesoria.cshtml" />
+    <Content Include="Areas\nutriologo01\Views\nut\obtinenechat.cshtml" />
+    <Content Include="Areas\nutriologo01\Views\nut\_agendacomidas.cshtml" />
+    <Content Include="Areas\nutriologo01\Views\nut\_listagendacomidas.cshtml" />
     <None Include="Properties\PublishProfiles\medium - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\medium - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\medium - Web Deploy.pubxml" />

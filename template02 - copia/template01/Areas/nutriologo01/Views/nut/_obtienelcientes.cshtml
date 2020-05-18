@@ -1,0 +1,23 @@
+﻿@model IEnumerable<template01.Models.usuariossocios17>
+@{
+    ViewBag.Title = "_obtienelcientes";
+}
+
+
+
+<label for="form_control_1">Escriba la informacion a buscar:</label>
+
+<select id="cboPerso" class="form-control">
+    <option></option>
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+    <option value="@item.idUsuario">@item.nosbres    @item.ap  @item.am</option>
+            }
+        }
+
+    }
+</select>
+

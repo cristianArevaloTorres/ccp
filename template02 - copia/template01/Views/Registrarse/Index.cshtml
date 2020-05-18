@@ -1,0 +1,388 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<link href="~/assets/apps/css/registrar.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="~/Scripts/jquery-ui.min.js"></script>
+
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h1>PERI - INFORMES<br>Registro de informes</h1>
+        <h2>Siga las instrucciones para enviar su informe</h2>
+        <br />
+        <br />
+        <h3>Al finalizar en automatico se enviara el informe via correo electronico y se guardara en BD para consultarlo posteriormente</h3>
+
+    </div>
+</div>
+<div class="main">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li><i class="fa fa-circle"></i></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    <div class="portlet light bordered">
+
+        <div class="portlet-body">
+
+            <div class="portlet-body form">
+                <form role="form">
+                    <div class="form-body">
+                        <div class="row hidden">
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idnombre" placeholder="">
+                                    <label for="form_control_1">¿Cual es su nombre?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idapellidop" placeholder="">
+                                    <label for="form_control_1">¿Cual es su apellido paterno?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idapellidom" placeholder="">
+                                    <label for="form_control_1">¿Cual es su apellido materno?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row hidden">
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input">
+                                    <input type="number" class="form-control" id="idedad" placeholder="">
+                                    <label for="form_control_1">¿Cual es su edad?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group form-md-line-input">
+                                    <input type="text" class="form-control" id="idvrazon" placeholder="">
+                                    <label for="form_control_1">¿Desea escribir una descripcion para que sus clientes la vean?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>El piso de apoyo para los puntales es firme/estable</label>
+                            <div class="mt-radio-list">
+                                <label class="mt-radio mt-radio-outline">
+                                    Si
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    No
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    No aplica
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Corregir reparar
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="md-checkbox-list">
+                            <p> Sistemas ALV </p>
+
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Capturada" class="md-check">
+                                <label for="Capturada">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>Multiflex
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Revisada" class="md-check">
+                                <label for="Revisada">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>Vario
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Autorizada" class="md-check">
+                                <label for="Autorizada">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>Handset
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Tramite" class="md-check">
+                                <label for="Tramite">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>LIWA
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Tramite1" class="md-check">
+                                <label for="Tramite1">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>Torres ST 100
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="Tramite2" class="md-check">
+                                <label for="Tramite2">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>Andamios
+                                </label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Numero de Obra</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="ingrese el numero de obra">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Nombre de la Obra</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="ingrese el nombre de la obra">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Empresa</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="ingrese el nombre de la empresa">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Tipo de Obra</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="Civil / industrial">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Direccion</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="Ingrese la direccion">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            </div>
+
+                            <label for="form_control_1">Foto general de la obra</label>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label>Tipo de informe o categoria</label>
+                            <div class="mt-radio-list">
+                                <label class="mt-radio mt-radio-outline">
+                                    Capacitacion de obra
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Reunion de trabajo
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Supervicion de Obra
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Programa Cero
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Observaciones Finales </label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="Escriba sus observaciones ">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Recomendaciones Finales</label>
+                            <div class="mt-radio-list">
+                                <label class="mt-radio mt-radio-outline">
+                                    Bueno
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Regular
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Inseguro
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                                <label class="mt-radio mt-radio-outline">
+                                    Corregir
+                                    <input type="radio" value="1" name="test">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">supervisor </label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="Supervisor">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <label class="col-md-2 control-label" for="form_control_1">Responsable de Obra</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="form_control_1" placeholder="Responsable de Obra">
+                                <div class="form-control-focus"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                <input type="text" class="form-control" id="idcorreo" placeholder="">
+                                <label for="form_control_1">Correo al cual se le enviara el informe :</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input hidden">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="idpass" placeholder="Password">
+                                <label for="form_control_1">Digite su nueva Contraseña</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="exampleFormControlSelect1">¿Usted es?</label>
+                            <select class="form-control" id="idvtipo">
+                                <option>Nutriologo</option>
+                                <option>Coach</option>
+                                <option>Usuario</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input class="btn btn-black btn-block "
+                           onclick="Registrar()" id="idterminar"
+                           type="button" value="Enviar Informe" />
+
+                </form>
+            </div>
+            <div class="container">
+
+
+
+
+
+
+
+            </div>
+            <div class="portlet-body" id="_ListRegistros"></div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+
+</div>
+
+<script>
+    function Registrar() {
+
+
+        var idvtipo = "1";
+        var idnombre = "2";
+        var idapellidop = "3";
+        var idapellidom = "4";
+        var idcorreo = $("#idcorreo").val();
+        var idusuario = $("#idcorreo").val();
+        var idvrazon = "prueba";
+        var idedad = "9"
+        var idpass = "44"
+
+        var regex = /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regex.test(idcorreo)) {
+           // alert("correo correcto");
+        }
+        else {
+            alert("su correo:" + idcorreo +" es incorrecto");
+            return false;
+        }
+
+        if (idvtipo == "" ||
+            idnombre == "" ||
+            idapellidop == "" ||
+            idapellidom == "" ||
+            idcorreo == "" ||
+            idusuario == "" ||
+            idvrazon == "" ||
+            idedad == "" ||
+            idpass == ""
+            ) {
+            alert("Por favor llene todos los campos");
+        }
+        else {
+            console.log("entro al post");
+                    $.post("@Url.Action("Registrar", "Registrarse")",
+                        {
+                            vtipo: idvtipo,
+                            nombre: idnombre,
+                            apellidop: idapellidop,
+                            apellidom: idapellidom,
+                            correo: idcorreo,
+                            usuario: idcorreo,
+                            vrazon: idvrazon,
+                            edad: idedad,
+                            pass: idpass
+                        },
+                        function (data) { })
+                              .done(function (response) {
+                                //  recargar()
+                                  location.reload();
+                              })
+                        .fail(function (response) {
+                            location.reload();
+
+                });
+            alert("El informe se ha enviado asu correo electronico ");
+
+        }
+
+
+        };
+</script>

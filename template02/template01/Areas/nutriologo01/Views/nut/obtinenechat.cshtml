@@ -1,0 +1,65 @@
+﻿@model IEnumerable<template01.Models.asesoriausuarios7>
+@{
+    ViewBag.Title = "obtinenechat";
+}
+<div class="portlet-title">
+    <div class="caption">
+        <i class="icon-bubble font-hide hide"></i>
+        <span class="caption-subject font-hide bold uppercase">Asesoria</span>
+    </div>
+
+</div>
+<div class="portlet-body" id="chats">
+    <div class="slimScrollDiv" style="position: relative; overflow: scroll; width: auto; height: 520px;">
+        <ul class="chats">
+            @{
+                if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        if (item.idpregunta == 1)
+                        {
+                            <li class="out">
+                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg">
+                                <div class="message">
+                                    <span class="arrow"> </span>
+                                    <a href="javascript:;" class="name"> @item.nombreCompleto</a>
+                                    <span class="datetime"> Nutriologo</span>
+                                    <span class="body"> @item.vpregunta </span>
+                                </div>
+                            </li>
+                        }
+                        if (item.idrespuesta == 1)
+                        {
+                            <li class="in">
+                                <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar1.jpg">
+                                <div class="message">
+                                    <span class="arrow"> </span>
+                                    <a href="javascript:;" class="name"> @item.nombreCompleto</a>
+                                    <span class="datetime"> Usuario</span>
+                                    <span class="body">  @item.vrespuesta </span>
+                                </div>
+                            </li>
+                        }
+
+                    }
+                }
+
+            }
+
+
+        </ul>
+    </div>
+</div>
+<div class="chat-form">
+    <div class="input-cont">
+        <input class="form-control" type="text" id="mensajetexto" placeholder="Escriba su mensaje a qui...">
+    </div>
+    <div class="btn-cont" onclick="guardarmensaje('@ViewBag.id')">
+        <span class="arrow"> </span>
+        <a href="" class="btn blue icn-only">
+            <i class="fa fa-check icon-white"></i>
+        </a>
+    </div>
+</div>
+
