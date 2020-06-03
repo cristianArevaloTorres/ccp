@@ -32,15 +32,20 @@ namespace template01.Controllers
             YCPdata ACCIONES = new YCPdata();
             string cadena = "";
          string   vmensaje = $@"<html>
-                  <center><h1><strong>PERI-INFORME:</strong></h1></center>
-                    <center><h3><strong>Usuario de Prueba</strong></h3></center>
+                  <center><h1><strong>Bienvenido a:</strong></h1></center>
+                    <center><h3><strong>Tu Couch Personal</strong></h3></center>
                             <br>
                             <br>
                             <br>
                     <p><center>
-                  Se ha concluido satisfactoriamente el informe.
-                    <p>Aqui ira su informe adjuntado en formato pdf o en texto plano segun lo reuqiera </p>
-                 
+                    Usted ha concluido satisfactoriamente el procedimiento electrónico de Pre-registro.
+                    <p>Este mensaje es el acuse de la recepción de su informacion para la cual obtendra beneficios adicionales en caso de que usted quiera adquirir </p>
+                    <p>una membresia.</p>   
+                    <br>
+                    <br>
+                    <p>el preregistro no lo compromete a comprar la membresia unicamente a gozar de descuentos en caso de que quiera adquirirla</p>   
+                    </center></p>                    
+                    <br>
 
 
                     
@@ -49,7 +54,7 @@ namespace template01.Controllers
                 </ html > ";
 
 
-            EnviaCorreo(correo, vmensaje, "Informe Automatico Peri -Prototipo");
+            EnviaCorreo(correo, vmensaje, "Bienvenido Pre-registro exitoso");
             cadena = WebConfigurationManager.ConnectionStrings["YCP_BD"].ConnectionString;
            ACCIONES.guardarusuarios01(cadena, vtipo, nombre, apellidop, apellidom, correo, usuario, vrazon, edad, pass);
             return new JsonResult();

@@ -147,10 +147,10 @@ namespace template01
             int puerto = 25;
            
            
-            usuario = "peri-informes@iteration.mx";
-            contraseña = "PERISOFT123";
+            usuario = "info-tcp@iteration.mx";
+            contraseña = "TCP2020@";
             servidor = "mail.iteration.mx";
-            puerto = 26;        
+            puerto = 25;        
             using (Smtp correo = new Smtp(servidor, usuario, contraseña, puerto))
             {
                // correo.ActivarSsl = true;

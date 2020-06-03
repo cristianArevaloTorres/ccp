@@ -5332,12 +5332,8 @@
     <Content Include="Images\Polanco\logo2.png" />
     <Content Include="Images\Polanco\Pages\bg\1.jpg" />
     <Content Include="Images\Polanco\Pages\bg\2.jpg" />
-    <Content Include="Images\Polanco\Pages\bg\3.jpg" />
-    <Content Include="Images\Polanco\Pages\bg\4.jpg" />
-    <Content Include="Images\Polanco\Pages\bg\5.jpg" />
-    <Content Include="Images\Polanco\Pages\bg\6.jpg" />
-    <Content Include="Images\Polanco\Pages\bg\oX8hsY.jpg" />
     <Content Include="Images\Polanco\Pages\favicon.ico" />
+    <Content Include="Images\Polanco\presea.png" />
     <Content Include="Images\Polanco\red-arrow-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -5406,8 +5402,8 @@
     <Content Include="Areas\nutriologo01\Views\nut\obtinenechat.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_agendacomidas.cshtml" />
     <Content Include="Areas\nutriologo01\Views\nut\_listagendacomidas.cshtml" />
-    <None Include="Properties\PublishProfiles\informespruebas - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\informespruebas - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\alm - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\alm - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\medium - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\medium - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\medium - Web Deploy.pubxml" />

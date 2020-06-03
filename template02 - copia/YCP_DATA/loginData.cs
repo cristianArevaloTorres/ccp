@@ -12,7 +12,7 @@ namespace YCP_DATA
    public class loginData
     {
 
-        public List<usuariosInfo2> BuscarUsuario(string correo, string contraseña,string cadena)
+        public List<usuariosInfo2> BuscarUsuario(string usuario, string contraseña,string cadena)
         {
             List<usuariosInfo2> _usuariosInfo2 = new List<usuariosInfo2>();
             usuariosInfo2 usuariosInfo2 = new usuariosInfo2();
@@ -23,11 +23,11 @@ namespace YCP_DATA
 
                 conn.Open();
                 DataSet ds = new DataSet();
-                string query = " select TOP 1 BC.idusuario,BC.nombre,BC.apellidop,BC.apellidom,UPPER(BC.vtipo) as vtipo,BC.usuario from usuarios01 AB " +
-                                "INNER JOIN usuariosInfo02 BC " +
-                                "ON AB.idusuario = BC.idusuario " +
-                                "where UPPER(AB.vusuario) =UPPER('"+correo+"') "+ 
-                                "and AB.contraseña ='"+contraseña+"'";
+                string query = "select A.NOMBRE,A.AP, A.AM, A.IDUSUARIO, B.VUSUARIO,A.TIPOUSUARIO from usuario_psea_01 A " + 
+                               "inner join usuario_seg_psea_02 B " + 
+                               "ON A.IDUSUARIO = B.idUsuario " +
+                                "where UPPER(B.VUSUARIO) =UPPER('" + usuario + "') "+
+                                "and B.vDescripcionpp ='" + contraseña+"'";
                 SqlCommand sqlComm = new SqlCommand(query, conn);
                 using (SqlDataReader dr = sqlComm.ExecuteReader())
                 {
@@ -35,12 +35,12 @@ namespace YCP_DATA
                     {
                         usuariosInfo2 = new usuariosInfo2
                         {
-                            idusuario = Convert.ToInt32(dr["idusuario"]),
-                            nombre = dr["nombre"].ToString(),
-                            apellidoP = dr["apellidop"].ToString(),
-                            apellidoM = dr["apellidom"].ToString(),
-                            vtipo = dr["vtipo"].ToString(),
-                            usuario = dr["usuario"].ToString()
+                            idusuario = Convert.ToInt32(dr["IDUSUARIO"]),
+                            nombre = dr["NOMBRE"].ToString(),
+                            apellidoP = dr["AP"].ToString(),
+                            apellidoM = dr["AM"].ToString(),
+                            vtipo = dr["TIPOUSUARIO"].ToString(),
+                            usuario = dr["VUSUARIO"].ToString()
 
                         };
                         _usuariosInfo2.Add(usuariosInfo2);

@@ -35,7 +35,7 @@ namespace template01.Controllers
             return View();
         }
 
-        public JsonResult ValidarUser(string correo = "", string contraseño = "")
+        public JsonResult ValidarUser(string usuario = "", string contraseña= "")
         {
             string respuesta = "0";
             try
@@ -45,7 +45,7 @@ namespace template01.Controllers
                 List<usuariosInfo2> _listasocios = new List<YCP_DATA.usuariosInfo2>();
                 List<Models.usuariosInfo2> _listasociosvista = new List<Models.usuariosInfo2>();
                 usuariosInfo2 entidd = new usuariosInfo2();          
-                _listasocios =  serv.BuscarUsuario(correo, contraseño, cadena);
+                _listasocios =  serv.BuscarUsuario(usuario, contraseña, cadena);
             
                 if (_listasocios.Count > 0)
                 {
