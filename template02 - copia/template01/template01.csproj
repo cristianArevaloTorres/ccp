@@ -5332,6 +5332,12 @@
     <Content Include="Images\Polanco\logo2.png" />
     <Content Include="Images\Polanco\Pages\bg\1.jpg" />
     <Content Include="Images\Polanco\Pages\bg\2.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\3.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\4.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\5.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\6.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\7.jpg" />
+    <Content Include="Images\Polanco\Pages\bg\8.jpg" />
     <Content Include="Images\Polanco\Pages\favicon.ico" />
     <Content Include="Images\Polanco\presea.png" />
     <Content Include="Images\Polanco\red-arrow-icon.png" />
