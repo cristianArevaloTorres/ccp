@@ -1,0 +1,208 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+}
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/css/select2.css" rel="stylesheet" />
+
+    <link href="~/css/select2-bootstrap.css" rel="stylesheet" />
+    <!---  SCRIPOS SOLO PARA DATEPIKER  -->
+
+    <link href="~/Scripts/est/calendario/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script src="~/Scripts/est/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/est/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/est/calendario/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+    <script src="~/Scripts/est/calendario/js/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+    <!---  SCRIPOS SOLO PARA DATEPIKER  -->
+</head>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Consulta Clientes</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <img src="~/assets/pages/img/banners/people-2562212_1920.jpg" />
+    </div>
+</div>
+<body>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="glyphicon glyphicon-qrcode font-blue-steel"></i> <span class="caption-subject font-blue-steel sbold">
+                    Asignar Recetas/Comidas
+                </span>
+            </div>
+        </div>
+        <div class="portlet-body">
+
+            <div class="portlet box grey-sharp">
+                <div id="bodyFiltro" style="" class="portlet-body">
+
+
+                    <form role="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div id="idPersonas">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <input class="btn btn-black btn-block "
+                               onclick="BuscarCliente()" id="idbuscar"
+                               type="button" value="Buscar" />
+                        <script>
+                            function BuscarCliente() {
+                                var idbusqueda = $("#cboPerso").val();
+                                if (idbusqueda.length> 0) {
+                                   $.ajax({
+                                            type: 'GET',
+                                            url: "@Url.Action("_resultadobusquedaCliente", "nut")",
+                                       data: { idcliente: idbusqueda },
+                                            success: function (response) {
+                                                $("#infopersonaCl").html(response);
+                                                                $.ajax({
+                                                                    type: 'GET',
+                                                                    url: "@Url.Action("_obtieneRecetasaltas", "nut")",
+                                                                    //data: { idunidadnegocio: val },
+                                                                    success: function (response) {
+
+                                                                        $("#idrecetas").html(response);
+                                                                        $("#cboreceta").select2({
+                                                                            placeholder: "Seleccione la receta...",
+                                                                            allowClear: true,
+                                                                            //minimumInputLength: 3,
+                                                                            escapeMarkup: function (m) { return m; }
+
+                                                                        });
+                                                                    },
+                                                                    error: function (result) {
+
+                                                                    }
+                                                                });
+                                            },
+                                            error: function (result) {
+
+                                            }
+                                        });
+                                } else {
+                                    //no buscar
+                                    alert("Por favor eligs un cliente para buscarlo")
+                                }
+
+                            }
+                        </script>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="container">
+                <!-- Trigger the modal with a button -->
+                <!-- Modal -->
+                <div id="infopersonaCl">
+
+                </div>
+
+
+            </div>
+
+
+            <!-- /input-group -->
+
+            <script>
+                $(".form_datetime").datetimepicker({
+                    //language: 'es',
+                    format: "dd/mm/yyyy",
+                    showMeridian: true,
+                    autoclose: true,
+                    todayBtn: true,
+
+                    forceParse: true
+                });
+                $('.form_date').datetimepicker({
+                    language: 'es',
+                    format: "dd/mm/yyyy",
+                    weekStart: 1,
+                    todayBtn: 1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    minView: 2,
+                    forceParse: 0
+                });
+                $('.form_time').datetimepicker({
+                    language: 'es',
+                    weekStart: 1,
+                    todayBtn: 1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 1,
+                    minView: 0,
+                    maxView: 1,
+                    forceParse: 0
+                });
+            </script>
+
+        </div>
+        <div class="portlet-body" id="_ListRegistros"></div>
+
+    </div>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/select2_locale_es.js"></script>
+    <script>
+
+          function cargaClientes() {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("_obtienelcientes", "nut")",
+            //data: { idunidadnegocio: val },
+            success: function (response) {
+                $("#idPersonas").html(response);
+                $("#cboPerso").select2({
+                    placeholder: "Seleccione el cliente...",
+                    allowClear: true,
+                    //minimumInputLength: 3,
+                    escapeMarkup: function (m) { return m; }
+
+                });
+            },
+            error: function (result) {
+
+            }
+        });
+    };
+        $(document).ready(function () {
+            cargaClientes();
+        });
+
+
+    </script>
+</body>
+
+</html>

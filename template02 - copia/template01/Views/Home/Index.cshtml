@@ -18,8 +18,100 @@
 
 <div class="content">
 
-    <!-- BEGIN LOGIN FORM -->
-    @*<form class="login-form" action="Index" method="post">*@
+    <div class="video-wrap">
+        <video id="video" playsinline autoplay></video>
+    </div>
+
+    <!-- Trigger canvas web API -->
+    <div class="controller">
+        <button id="snap">Capture</button>
+    </div>
+
+    <canvas id="SigCnv2" width="640" height="480"></canvas>
+
+    <script>
+        'use strict';
+
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('SigCnv2');
+        const snap = document.getElementById("snap");
+        const errorMsgElement = document.querySelector('span#errorMsg');
+
+        const constraints = {
+            audio: false,
+            video: {
+                width: 1280, height: 720
+            }
+        };
+
+        // Access webcam
+        async function init() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            } catch (e) {
+                errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+            }
+        }
+
+        // Success
+        function handleSuccess(stream) {
+            window.stream = stream;
+            video.srcObject = stream;
+        }
+
+        // Load init
+        init();
+
+        // Draw image
+        var context = canvas.getContext('2d');
+        snap.addEventListener("click", function () {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    </script>
+
+    <form id="form1" runat="server">
+        <div>
+
+            <canvas id="SigCnv" width="640" height="480"></canvas>
+
+
+
+
+            <input type="button" id="btnSave" onclick="guardar()" name="btnSave" value="Save the canvas to server" />
+            <script type="text/javascript">
+
+                // Send the canvas image to the server.
+                function guardar() {
+                    var image = document.getElementById("SigCnv2").toDataURL("image/png");
+                    image = image.replace('data:image/png;base64,', '');
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Login/UploadImage',
+                        data: '{ "imageData" : "' + image + '" }',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (msg) {
+                            alert('Image saved successfully !');
+                        }
+                    });
+                }
+
+
+
+            </script>
+        </div>
+    </form>
+
+
+
+    @using (Html.BeginForm("guardar", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <input type="file" name="file" /> <button type="submit">Subir archivo</button>
+    }
+
+
     <form class="login-form" method="post">
         <img style="width:150px; height:100px; align-content:center" src="~/Images/Polanco/presea.png" />
         <br />

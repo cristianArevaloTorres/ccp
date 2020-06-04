@@ -1,0 +1,171 @@
+﻿@using Senado.Convocatoria.Helpers;
+
+@model IEnumerable<Senado.Convocatoria.Areas.AsignacionValidador.Models.UsuariosModel>
+
+
+@{
+    string idUsuarioaspirante = "";
+    string estatus = @ViewBag.estatus;
+}
+
+
+<div class="tabbable-line">
+    <ul class="nav nav-tabs">
+        <li class="@ViewBag.ActAsignados">
+            <a href="#tab_1_1" onclick="Recargar('asignado',10)" data-toggle="tab" aria-expanded="true">
+                Asignados
+                <span class="label label-sm label-danger circle">@ViewBag.totalAsignados</span>
+            </a>
+        </li>
+        <li class="@ViewBag.ActReAsignados">
+            <a href="#tab_1_2" onclick="Recargar('reasignado',10)" data-toggle="tab" aria-expanded="false">
+                ReAsignados
+                <span class="label label-sm label-danger circle">@ViewBag.totalReAsignados</span>
+            </a>
+        </li>
+        <li class="@ViewBag.ActEnproceso">
+            <a href="#tab_1_2" onclick="Recargar('enproceso',10)" data-toggle="tab" aria-expanded="false">
+                En proceso
+                <span class="label label-sm label-danger circle">@ViewBag.totalEnproceso</span>
+            </a>
+        </li>
+        <li class="@ViewBag.ActFinalizados">
+            <a href="#tab_1_2" onclick="Recargar('aprobado',10)" data-toggle="tab" aria-expanded="false">
+                Aprobados
+                <span class="label label-sm label-danger circle">@ViewBag.totalFinalizados</span>
+            </a>
+        </li>
+        <li class="@ViewBag.ActRechazados">
+            <a href="#tab_1_2" onclick="Recargar('rechazado',10)" data-toggle="tab" aria-expanded="false">
+                Rechazados
+                <span class="label label-sm label-danger circle">@ViewBag.totalRechazados</span>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<div id="divAspirantes" class="sortablecolumn">
+    <table id="AspirantesTab" class="items2 widget linked table table-hover table-striped table-bordered ">
+
+        <thead>
+            <tr>
+                <th class="text-center">
+                    #
+                </th>
+                <th class="text-center">
+                    Nombre
+                </th>
+                <th class="text-center">
+                    Apellido P.
+                </th>
+                <th class="text-center">
+                    Apellido M.
+                </th>
+
+                <th class="text-center">
+                    .
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            idUsuarioaspirante = "apirante_" + @item.idUsuario;
+            <tbody>
+                <tr>
+                    <td value="@idUsuarioaspirante" class="">
+                        <label class="mt-checkbox mt-checkbox-outline hidden">
+                            <input type="checkbox" class="checar hidden" value="@idUsuarioaspirante" name=""><span></span>
+                        </label>
+                        @Html.DisplayFor(modelItem => item.idUsuario)
+                    </td>
+                    <td class="text-center">   @Html.DisplayFor(modelItem => item.vNombre) </td>
+                    <td class="text-center"> @Html.DisplayFor(modelItem => item.vApellidoPaterno)     </td>
+                    <td class="text-center">  @Html.DisplayFor(modelItem => item.vApellidoMaterno) </td>
+                    <td class="text-center">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Acciones
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                @{ if (@estatus != "aprobado")
+                                    {
+                                        <li>
+                                            <a onclick="CambiarEstatus('@estatus','@item.idUsuario')">
+                                                <i class="icon-bell"></i> Asignar Estatus
+                                            </a>
+                                        </li>
+                                    }
+
+                                }
+                                <li>
+
+                                    @Html.RouteLink("Revisión", new { action = "obtenerInfoPreguntaRedirect", controller = "Estatus", area = "Consultas"
+                           , idUsuario = item.idUsuario, nombre = item.vNombre+" "+item.vApellidoPaterno,tipo= @estatus,
+                                   idConvocatoriaParam = @System.Configuration.ConfigurationManager.AppSettings["IdTipoConvocatoria"]
+                               }
+                           )
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        }
+        @*@Html.ActionLink(" Borrar", "_ObtenerPreguntaMensajes", "Paises", new { @Areas = "Configuracion", parentPartId = @Model.ElementAt(i).IdEstado, idMunicipio = @Model.ElementAt(i).IdMunicipio }, new { @class = "modal-link" })*@
+    </table>
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        var table = $('#AspirantesTab').DataTable({
+            rowReorder: false,
+            "ordering": false,
+            columnDefs: [
+                { orderable: true, className: 'dt-body-left', targets: 0 },
+                { orderable: false, targets: '_all' }
+            ],
+            autoFill: true,
+            Destroy: true,
+            searching: false,
+            language: {
+                aria: {
+                    sortAscending: ": activate to sort column ascending",
+                    sortDescending: ": activate to sort column descending"
+                }
+                , info: "_START_ de _END_ de _TOTAL_ Registros totales "
+                , infoEmpty: "sin registros"
+                , infoFiltered: "(filtered1 from _MAX_ total entries)"
+                , lengthMenu: "_MENU_ Registros"
+                , search: "Busqueda:"
+                , entries: "Registros",
+                loadingRecords: "Cargando...",
+                zeroRecords: "Sin Resultados",
+                emptyTable: "Sin resultados",
+                paginate: {
+                    first: "primero",
+                    previous: "anterior",
+                    next: "siguiente",
+                    last: "ultimo"
+                }
+            },
+            buttons: [
+
+            ],
+            destroy: true
+            , order: [[0, "asc"]]
+            , lengthMenu: [[5, 10, 15, 20, -1]
+                , [5, 10, 15, 20, "All"]]
+            , pageLength: 10
+            // , "dom": "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>" // horizobtal scrollable datatable
+
+        });
+
+
+
+    });
+
+</script>
