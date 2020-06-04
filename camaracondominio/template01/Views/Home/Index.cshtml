@@ -34,19 +34,17 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span>Consulta Clientes</span>
+            <span>Acceso y/o Salida</span>
         </li>
     </ul>
-    <div class="page-toolbar">
-        <img src="~/assets/pages/img/banners/people-2562212_1920.jpg" />
-    </div>
+ 
 </div>
 <body>
     <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
                 <i class="glyphicon glyphicon-qrcode font-blue-steel"></i> <span class="caption-subject font-blue-steel sbold">
-                    Asignar Recetas/Comidas
+                    Sistema Camaras
                 </span>
             </div>
         </div>
@@ -54,65 +52,116 @@
 
             <div class="portlet box grey-sharp">
                 <div id="bodyFiltro" style="" class="portlet-body">
+                    <div class="controller">
+                        <button id="snap">tomar foto</button>
+                    </div>
+                    <div class="video-wrap">
+                        <video id="video" playsinline autoplay></video>
+                    </div>
+
+                    <!-- Trigger canvas web API -->
 
 
-                    <form role="form">
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div id="idPersonas">
-
+                    <canvas id="SigCnv2" width="640" height="480"></canvas>
+                    <div class="portlet-body form">
+                        <form role="form">
+                            <div class="form-body hidden" id="informacion">                            
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="number" class="form-control" id="idedad" placeholder="">
+                                            <label for="form_control_1">Ingrese el Numero de placa</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group form-md-line-input">
+                                            <input type="text" class="form-control" id="idvrazon" placeholder="">
+                                            <label for="form_control_1">Nombre Persona que entra o sale</label>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
+                            <input class="btn btn-black btn-block "
+                                   onclick="Registrar()" id="idterminar"
+                                   type="button" value="Guardar" />
 
-                        </div>
-                        <br />
-                        <input class="btn btn-black btn-block "
-                               onclick="BuscarCliente()" id="idbuscar"
-                               type="button" value="Buscar" />
-                        <script>
-                            function BuscarCliente() {
-                                var idbusqueda = $("#cboPerso").val();
-                                if (idbusqueda.length> 0) {
-                                   $.ajax({
-                                            type: 'GET',
-                                            url: "@Url.Action("_resultadobusquedaCliente", "nut")",
-                                       data: { idcliente: idbusqueda },
-                                            success: function (response) {
-                                                $("#infopersonaCl").html(response);
-                                                                $.ajax({
-                                                                    type: 'GET',
-                                                                    url: "@Url.Action("_obtieneRecetasaltas", "nut")",
-                                                                    //data: { idunidadnegocio: val },
-                                                                    success: function (response) {
+                        </form>
+                    </div>
+                    <script>
+                        'use strict';
 
-                                                                        $("#idrecetas").html(response);
-                                                                        $("#cboreceta").select2({
-                                                                            placeholder: "Seleccione la receta...",
-                                                                            allowClear: true,
-                                                                            //minimumInputLength: 3,
-                                                                            escapeMarkup: function (m) { return m; }
+                        const video = document.getElementById('video');
+                        const canvas = document.getElementById('SigCnv2');
+                        const snap = document.getElementById("snap");
+                        const errorMsgElement = document.querySelector('span#errorMsg');
 
-                                                                        });
-                                                                    },
-                                                                    error: function (result) {
+                        const constraints = {
+                            audio: false,
+                            video: {
+                                width: 1280, height: 720
+                            }
+                        };
 
-                                                                    }
-                                                                });
-                                            },
-                                            error: function (result) {
+                        // Access webcam
+                        async function init() {
+                            try {
+                                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                                handleSuccess(stream);
+                            } catch (e) {
+                                errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+                            }
+                        }
 
-                                            }
-                                        });
-                                } else {
-                                    //no buscar
-                                    alert("Por favor eligs un cliente para buscarlo")
+                        // Success
+                        function handleSuccess(stream) {
+                            window.stream = stream;
+                            video.srcObject = stream;
+                        }
+
+                        // Load init
+                        init();
+
+                        // Draw image
+                        var context = canvas.getContext('2d');
+                        snap.addEventListener("click", function () {
+                            context.drawImage(video, 0, 0, 640, 480);
+                            $("#video").addClass("hidden");
+                            $("#informacion").removeClass("hidden");
+                        });
+                    </script>
+
+                    <form id="form1" runat="server">
+                        <div>
+
+                            <canvas id="SigCnv" width="640" height="480"></canvas>
+
+
+
+
+                            @*<input type="button" id="btnSave" onclick="guardar()" name="btnSave" value="Guardar imagen" />*@
+                            <script type="text/javascript">
+
+                                // Send the canvas image to the server.
+                                function guardar() {
+                                    var image = document.getElementById("SigCnv2").toDataURL("image/png");
+                                    image = image.replace('data:image/png;base64,', '');
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/Login/UploadImage',
+                                        data: '{ "imageData" : "' + image + '" }',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        success: function (msg) {
+                                            alert('Image saved successfully !');
+                                        }
+                                    });
                                 }
 
-                            }
-                        </script>
 
+
+                            </script>
+                        </div>
                     </form>
                 </div>
 
@@ -130,40 +179,6 @@
 
             <!-- /input-group -->
 
-            <script>
-                $(".form_datetime").datetimepicker({
-                    //language: 'es',
-                    format: "dd/mm/yyyy",
-                    showMeridian: true,
-                    autoclose: true,
-                    todayBtn: true,
-
-                    forceParse: true
-                });
-                $('.form_date').datetimepicker({
-                    language: 'es',
-                    format: "dd/mm/yyyy",
-                    weekStart: 1,
-                    todayBtn: 1,
-                    autoclose: 1,
-                    todayHighlight: 1,
-                    startView: 2,
-                    minView: 2,
-                    forceParse: 0
-                });
-                $('.form_time').datetimepicker({
-                    language: 'es',
-                    weekStart: 1,
-                    todayBtn: 1,
-                    autoclose: 1,
-                    todayHighlight: 1,
-                    startView: 1,
-                    minView: 0,
-                    maxView: 1,
-                    forceParse: 0
-                });
-            </script>
-
         </div>
         <div class="portlet-body" id="_ListRegistros"></div>
 
@@ -177,28 +192,9 @@
     <script src="~/Scripts/select2_locale_es.js"></script>
     <script>
 
-          function cargaClientes() {
-        $.ajax({
-            type: 'GET',
-            url: "@Url.Action("_obtienelcientes", "nut")",
-            //data: { idunidadnegocio: val },
-            success: function (response) {
-                $("#idPersonas").html(response);
-                $("#cboPerso").select2({
-                    placeholder: "Seleccione el cliente...",
-                    allowClear: true,
-                    //minimumInputLength: 3,
-                    escapeMarkup: function (m) { return m; }
-
-                });
-            },
-            error: function (result) {
-
-            }
-        });
-    };
+     
         $(document).ready(function () {
-            cargaClientes();
+       
         });
 
 

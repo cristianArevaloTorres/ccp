@@ -6305,10 +6305,6 @@
     <Folder Include="Scripts\est\librerias\imagenes\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DropBoxServiciosAccionesApi\DropBoxServiciosAccionesApi.csproj">
-      <Project>{c1b5620c-aaa5-4220-8445-8694bb1e5141}</Project>
-      <Name>DropBoxServiciosAccionesApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\YCP_DATA\YCP_DATA.csproj">
       <Project>{3787c0ce-a031-4483-a739-84be6f1822d8}</Project>
       <Name>YCP_DATA</Name>
