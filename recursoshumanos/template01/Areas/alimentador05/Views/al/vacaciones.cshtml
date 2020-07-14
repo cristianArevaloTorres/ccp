@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+}
+<link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar bg-grey-steel bg-font-grey-steel">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span> Vacaciones</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <img src="~/assets/pages/img/banners/computer-2982270_1920.jpg" />
+    </div>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+
+<h1 class="page-title">
+   Vacaciones
+    <small></small>
+</h1>
+
+
+<div class="col-md-12">
+    <div class="form-group form-md-line-input ">
+        <input type="text" value="" class="form-control" id="idapellidom" placeholder="">
+        <label for="form_control_1">Ingrese El numero empleado </label>
+    </div>
+    <div class="form-group form-md-line-input ">
+        <input type="text" value="" class="form-control" id="idapellidom" placeholder="">
+        <label for="form_control_1">Ingrese El nombre empleado</label>
+    </div>
+    <button type="button" class="btn btn-primary">Buscar</button>
+    <br />
+    <br />
+    <br />
+
+    <div class="portlet light bordered" id="mchat">
+        <div class="portlet-body form">
+            <form role="form">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group form-md-line-input ">
+                                <input type="text" value="Nombre ejemplo" class="form-control" id="idapellidom" placeholder="">
+                                <label for="form_control_1">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-md-line-input ">
+                                <input type="text" value="info ejemplo" class="form-control" id="idapellidom" placeholder="">
+                                <label for="form_control_1">Apellido Materno</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-md-line-input ">
+                                <input type="text" value="info ejemplo" class="form-control" id="idapellidom" placeholder="">
+                                <label for="form_control_1">Apellido Paterno</label>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group ">
+                                <label for="form_control_1">Dia inicio</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>...30</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Mes</label>
+                                <div class="col-md-4">
+                                    <select class="selectpicker">
+                                        <option>enero</option>
+                                        <option>febrero</option>
+                                        <option>marzo</option>
+                                        <option>... diciembre</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-md-line-input ">
+                                <input type="text" value="info ejemplo" class="form-control" id="idapellidom" placeholder="">
+                                <label for="form_control_1">Observaciones</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group ">
+                                <label for="form_control_1">Dia fin</label>
+                                <select class="selectpicker">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>...30</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Mes</label>
+                                <div class="col-md-4">
+                                    <select class="selectpicker">
+                                        <option>enero</option>
+                                        <option>febrero</option>
+                                        <option>marzo</option>
+                                        <option>... diciembre</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-md-line-input ">
+                                <input type="text" value="info ejemplo" class="form-control" id="idapellidom" placeholder="">
+                                <label for="form_control_1">Observaciones</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <input class="btn btn-black btn-block "
+                       onclick="Registrar()" id="idterminar"
+                       type="button" value="Agregar  informacion" />
+
+            </form>
+            <form role="form">
+                <div class="form-body">
+                    <div class="row">
+
+                        <div class="col-md-4">
+
+                            <label for="form_control_1">Registros  </label>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="row">
+
+                        <table class="table table-hover table-light">
+                            <thead>
+                                <tr>
+                                    <th> # folio empleado generado</th>
+                                    <th> Nombre de usuario</th>
+                                    <th> Ocupacion</th>
+
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 2569 </td>
+                                    <td> Aurelio Rodriguez Prueb </td>
+                                    <td> Ing sistemas </td>
+
+                                </tr>
+                                <tr>
+                                    <td> 2570</td>
+                                    <td>Nombre de Usuario de Prueba</td>
+                                    <td> Lic. Contabilidad </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery.js"></script>
+
+
+<!-- END CONTENT HEADER -->
+<!-- BEGIN CARDS -->
+<!-- END CARDS -->
+<!-- BEGIN TEXT & VIDEO -->
+<!-- END TEXT & VIDEO -->
+<!-- BEGIN MEMBERS SUCCESS STORIES -->
+<!-- END MEMBERS SUCCESS STORIES -->
+<!-- BEGIN LINKS BLOCK -->
+<!-- END LINKS BLOCK -->

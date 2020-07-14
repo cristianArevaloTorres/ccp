@@ -8,24 +8,47 @@ namespace template01.Areas.alimentador05.Controllers
 {
     public class alController : Controller
     {
-        
-            
-        public ActionResult recetas()
+
+        // GET: alimentador05/al
+        public ActionResult Index()
         {
             return View();
         }
-        public ActionResult alimentos()
+        public ActionResult permisos()
+        {
+            return View();
+        }
+        public ActionResult almacen()
+        {
+            return View();
+        }
+        public ActionResult marca()
+        {
+            return View();
+        }
+        public ActionResult sucursales()
+        {
+            return View();
+        }
+        public ActionResult altausuarios()
         {
             return View();
         }
 
-
+        public ActionResult Reporte()
+        {
+            return View();
+        }
 
 
 
 
         // GET: alimentador05/al
-        public ActionResult Index()
+        public ActionResult entrada()
+        {
+            return View();
+        }
+        public ActionResult salida()
         {
             return View();
         }

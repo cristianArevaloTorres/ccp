@@ -1,0 +1,110 @@
+﻿@model  List<template01.Models.DocumentosAdjuntar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Home/Views/Shared/_Layout.cshtml";
+
+}
+<script src="~/Scripts/est/js/jquery-3.3.1.min.js"></script>
+<h2>Documentos adjuntados</h2>
+
+@{
+    <table class="table table-bordered table-checkable dataTable no-footer dtr-inline collapsed">
+        <thead>
+            <tr role="row">
+                <th style="width:300px">
+                    Nombre Archivo
+                </th>
+                <th>
+                    Tipo Archivo
+                </th>
+                <th>
+                    Tipo Documento
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    fecha de guardado
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+
+                foreach (var item in (Model))
+                {
+                    <tr>
+                        <td>
+                            @item.vNombreDocumento
+                        </td>
+
+                        <td>
+                            @item.vTipoExtension
+                        </td>
+
+                        <td>
+                            @item.vTipoDocumento
+                        </td>
+
+                        <td>
+                            @{ if (@item.bProcesado == 0)
+                                {
+                                    <label>Sin procesar</label>
+                                }
+                                else
+                                {
+                                    <label>Procesado</label>
+                                }
+
+                            }
+                        </td>
+
+                        <td>
+                            @item.dtFechaCarga;
+                        </td>
+
+                        <td>
+                            <a href="javascript:;" onclick="eliminar('@item.idRegistro','@item.nDocumentoAdjuntado')" class="btn purple">
+                                <i class="fa fa-times"></i> Quitar
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script>
+        function eliminar(idregistro, iddocuento)
+        {
+
+
+                 $.post("@Url.Action("eliminar", "Bienvenido")",
+                     {
+                         idreg: idregistro,
+                         iddoc: iddocuento
+                   },
+                  function (data) {
+
+
+                  })
+                  .done(function (response) {
+                      location.reload();
+                  })
+                .fail(function(response){
+
+                  })
+                ;
+
+        }
+    </script>
+
+
+
+}

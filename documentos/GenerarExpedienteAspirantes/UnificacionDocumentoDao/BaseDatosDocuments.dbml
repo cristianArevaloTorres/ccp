@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BD_ConfiguracionDocumentoPDF" Class="BaseDatosDocumentsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.50.66;Initial Catalog=BD_ConfiguracionDocumentoPDF;Persist Security Info=True;User ID=sa" SettingsObjectName="UnificacionDocumentoDao.Properties.Settings" SettingsPropertyName="BD_ConfiguracionDocumentoPDFConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.AdjuntarDocumentosConvocatoria" Method="AdjuntarDocumentosConvocatoria">
+    <Parameter Name="idTipoConvocatoria" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AdjuntarDocumentosConvocatoriaResult">
+      <Column Name="bAdjuntarDocumentoSeccion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarDocumentosPorUnificar" Method="ConsultarDocumentosPorUnificar">
+    <Parameter Name="idTipoConvocatoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idUsuarioAspirante" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bDocumentoPublico" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="ConsultarDocumentosPorUnificarResult">
+      <Column Name="idUsuarioAspirante" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vNombreDoc" Type="System.String" DbType="VarChar(231)" CanBeNull="true" />
+      <Column Name="vDocumentoPublico" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="vNombreTipoDocumento" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="vRutaTipoDocumento" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ConsultarRutaDocumentos" Method="ConsultarRutaDocumentos">
+    <Parameter Name="idTipoConvocatoria" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ConsultarRutaDocumentosResult">
+      <Column Name="idConvocatoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idAspiranteDocumento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vNombreRutaCarpeta" Type="System.String" DbType="VarChar(160)" CanBeNull="true" />
+      <Column Name="bDocumentosPublicos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DocumentosPorUnificar" Method="DocumentosPorUnificar">
+    <Parameter Name="idTipoConvocatoria" Type="System.Int32" DbType="Int" />
+    <ElementType Name="DocumentosPorUnificarResult">
+      <Column Name="REG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GuardarDetalleDocumentoFinal" Method="GuardarDetalleDocumentoFinal">
+    <Parameter Name="vTipoAccion" Type="System.String" DbType="Char(6)" />
+    <Parameter Name="idAspiranteDocumento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idConvocatoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="vNombreDocumentoFinal" Type="System.String" DbType="VarChar(160)" />
+    <Parameter Name="idUsuarioAlta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bDocumentoCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="bDocumentoPublico" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="vObservaciones" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="idUsuarioValidacion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bDocumentoGeneradoCompleto" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="vMensajeError" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="vrArchivoFinal" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="idDocumentoAdjuntarActualizar" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GuardarDetalleDocumentoFinalResult">
+      <Column Name="idErrorReturn" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vDescripcionErrorReturn" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_insertaValoresLog" Method="sp_insertaValoresLog">
+    <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ruta" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="vTipoError" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="vDescripcionError" Type="System.String" DbType="VarChar(700)" />
+    <Parameter Name="vparametros" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ConsultarConvocatoriasActivas" Method="ConsultarConvocatoriasActivas">
+    <ElementType Name="ConsultarConvocatoriasActivasResult">
+      <Column Name="idConvocatoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vNombreServidor" Type="System.String" DbType="VarChar(19)" CanBeNull="true" />
+      <Column Name="vIpServidor" Type="System.String" DbType="VarChar(19) NOT NULL" CanBeNull="false" />
+      <Column Name="vNombreBaseDatos" Type="System.String" DbType="VarChar(190) NOT NULL" CanBeNull="false" />
+      <Column Name="vUsuario" Type="System.String" DbType="VarChar(29)" CanBeNull="true" />
+      <Column Name="vContraseña" Type="System.String" DbType="VarChar(29)" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

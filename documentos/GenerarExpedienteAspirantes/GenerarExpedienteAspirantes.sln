@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerarExpedienteAspirantes", "GenerarExpedienteAspirantes\GenerarExpedienteAspirantes.csproj", "{6C8B65B3-0840-4367-B169-5D46A64D1318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnificacionDocumentoDao", "UnificacionDocumentoDao\UnificacionDocumentoDao.csproj", "{C06FA1C2-B553-4359-AA38-F4621B153A17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnificacionDocumentosPDF.Service", "UnificacionDocumentosPDF.Service\UnificacionDocumentosPDF.Service.csproj", "{3B2ACE4F-85EC-418E-BA80-8DCEDCD4BADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerarExpedienteAspirantesCNDH", "GenerarExpedienteAspirantesCNDH\GenerarExpedienteAspirantesCNDH.csproj", "{0CAF403F-534C-4FE0-83ED-F7A11735ECFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C8B65B3-0840-4367-B169-5D46A64D1318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8B65B3-0840-4367-B169-5D46A64D1318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8B65B3-0840-4367-B169-5D46A64D1318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8B65B3-0840-4367-B169-5D46A64D1318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C06FA1C2-B553-4359-AA38-F4621B153A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06FA1C2-B553-4359-AA38-F4621B153A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06FA1C2-B553-4359-AA38-F4621B153A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06FA1C2-B553-4359-AA38-F4621B153A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2ACE4F-85EC-418E-BA80-8DCEDCD4BADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2ACE4F-85EC-418E-BA80-8DCEDCD4BADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2ACE4F-85EC-418E-BA80-8DCEDCD4BADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2ACE4F-85EC-418E-BA80-8DCEDCD4BADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAF403F-534C-4FE0-83ED-F7A11735ECFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAF403F-534C-4FE0-83ED-F7A11735ECFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAF403F-534C-4FE0-83ED-F7A11735ECFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAF403F-534C-4FE0-83ED-F7A11735ECFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D0CB802-9B25-4BBA-BF4F-C7BF08E3FAC5}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.10.64:8080/tfs/expaspirantessnd_sw
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GenerarExpedienteAspirantes\\GenerarExpedienteAspirantes.csproj
+		SccProjectName1 = GenerarExpedienteAspirantes
+		SccLocalPath1 = GenerarExpedienteAspirantes
+		SccProjectUniqueName2 = UnificacionDocumentoDao\\UnificacionDocumentoDao.csproj
+		SccProjectName2 = UnificacionDocumentoDao
+		SccLocalPath2 = UnificacionDocumentoDao
+		SccProjectUniqueName3 = UnificacionDocumentosPDF.Service\\UnificacionDocumentosPDF.Service.csproj
+		SccProjectName3 = UnificacionDocumentosPDF.Service
+		SccLocalPath3 = UnificacionDocumentosPDF.Service
+		SccProjectUniqueName4 = GenerarExpedienteAspirantesCNDH\\GenerarExpedienteAspirantesCNDH.csproj
+		SccProjectName4 = GenerarExpedienteAspirantesCNDH
+		SccLocalPath4 = GenerarExpedienteAspirantesCNDH
+	EndGlobalSection
+EndGlobal

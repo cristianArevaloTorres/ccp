@@ -37,7 +37,7 @@
             <span>Acceso y/o Salida</span>
         </li>
     </ul>
- 
+
 </div>
 <body>
     <div class="portlet light bordered">
@@ -52,24 +52,20 @@
 
             <div class="portlet box grey-sharp">
                 <div id="bodyFiltro" style="" class="portlet-body">
-                    <div class="controller">
+                    <div class="controller btn btn-black btn-block ">
                         <button id="snap">tomar foto</button>
                     </div>
                     <div class="video-wrap">
                         <video id="video" playsinline autoplay></video>
                     </div>
 
-                    <!-- Trigger canvas web API -->
-
-
-                    <canvas id="SigCnv2" width="640" height="480"></canvas>
                     <div class="portlet-body form">
                         <form role="form">
-                            <div class="form-body hidden" id="informacion">                            
+                            <div class="form-body hidden" id="informacion">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group form-md-line-input">
-                                            <input type="number" class="form-control" id="idedad" placeholder="">
+                                            <input type="text" class="form-control" id="idedad" placeholder="">
                                             <label for="form_control_1">Ingrese el Numero de placa</label>
                                         </div>
                                     </div>
@@ -82,12 +78,19 @@
                                 </div>
 
                             </div>
-                            <input class="btn btn-black btn-block "
+                            <input class="btn btn-black btn-block hidden "
                                    onclick="Registrar()" id="idterminar"
                                    type="button" value="Guardar" />
-
+                            <script>
+                                function Registrar() {
+                                    location.reload();
+                                }
+                            </script>
                         </form>
                     </div>
+
+                    <canvas id="SigCnv2" width="640" height="480"></canvas>
+
                     <script>
                         'use strict';
 
@@ -109,7 +112,7 @@
                                 const stream = await navigator.mediaDevices.getUserMedia(constraints);
                                 handleSuccess(stream);
                             } catch (e) {
-                                errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+                                //  errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
                             }
                         }
 
@@ -128,6 +131,8 @@
                             context.drawImage(video, 0, 0, 640, 480);
                             $("#video").addClass("hidden");
                             $("#informacion").removeClass("hidden");
+                            $("#snap").addClass("hidden");
+                            $("#idterminar").removeClass("hidden");
                         });
                     </script>
 
@@ -192,9 +197,9 @@
     <script src="~/Scripts/select2_locale_es.js"></script>
     <script>
 
-     
+
         $(document).ready(function () {
-       
+
         });
 
 

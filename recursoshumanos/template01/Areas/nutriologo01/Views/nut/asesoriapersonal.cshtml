@@ -1,0 +1,137 @@
+﻿@model IEnumerable<template01.Models.consultacliente>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+
+}
+
+<link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+
+
+
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar bg-grey-steel bg-font-grey-steel">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Asesoria Personal</span>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <img src="~/assets/pages/img/banners/runner-4800810_1920.jpg" />
+    </div>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+
+<h1 class="page-title">
+    Asesoria Personal
+    <small></small>
+</h1>
+<div class="col-lg-3">
+    <div class="col-lg-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-share font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Clientes</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="slimScrollDiv" style="position: relative; overflow: scroll; width: auto; height: 600px;" id="clientesasesoria">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-9">
+    <div class="col-lg-12">
+        <div class="portlet light bordered"  id="mchat">
+         
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery.js"></script>
+
+<script>
+    function guardarmensaje(idcliente) {
+        event.preventDefault();
+        var mensaje = $("#mensajetexto").val();    
+        if (mensaje == "") {
+            alert("Escriba el mensaje que desea enviarle a su cliente ");
+            return false;
+        }      
+                $.ajax({
+            type: 'GET',
+            url: "@Url.Action("mandarmsj", "nut")",
+                    data: { idcliente: idcliente, mensaje: mensaje},
+                    success: function (response) {
+                    
+                        mostrarchat(idcliente);
+            },
+            error: function (result) {
+                mostrarchat(idcliente);
+            }
+        });
+        return false;
+        }
+    function mostrarchat(idcliente) {
+    
+                $.ajax({
+            type: 'GET',
+            url: "@Url.Action("obtinenechat", "nut")",
+                    data: { idclilente: idcliente },
+            success: function (response) {
+                $("#mchat").html(response);
+
+            },
+            error: function (result) {
+
+            }
+        });
+
+        }
+          function cargaClientes() {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("_obtienelcientesAsesoria", "nut")",
+            //data: { idunidadnegocio: val },
+            success: function (response) {
+                $("#clientesasesoria").html(response);
+
+            },
+            error: function (result) {
+
+            }
+        });
+    };
+        $(document).ready(function () {
+            cargaClientes();
+        });
+
+
+</script>
+
+
+<!-- END CONTENT HEADER -->
+<!-- BEGIN CARDS -->
+<!-- END CARDS -->
+<!-- BEGIN TEXT & VIDEO -->
+<!-- END TEXT & VIDEO -->
+<!-- BEGIN MEMBERS SUCCESS STORIES -->
+<!-- END MEMBERS SUCCESS STORIES -->
+<!-- BEGIN LINKS BLOCK -->
+<!-- END LINKS BLOCK -->

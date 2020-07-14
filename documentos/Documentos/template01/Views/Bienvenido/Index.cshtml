@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+}
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/css/select2.css" rel="stylesheet" />
+
+    <link href="~/css/select2-bootstrap.css" rel="stylesheet" />
+    <!---  SCRIPOS SOLO PARA DATEPIKER  -->
+
+    <link href="~/Scripts/est/calendario/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script src="~/Scripts/est/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/est/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/est/calendario/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+    <script src="~/Scripts/est/calendario/js/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+    <!---  SCRIPOS SOLO PARA DATEPIKER  -->
+</head>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="index">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <span>Adjunte el archivo a subir</span>
+        </li>
+    </ul>
+
+</div>
+<body>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="glyphicon glyphicon-qrcode font-blue-steel"></i> <span class="caption-subject font-blue-steel sbold">
+                    Sistema de archivos
+                </span>
+            </div>
+        </div>
+        <div class="portlet-body">
+            @{
+                string area = (string)(Session["area"]);
+            }
+            <div class="row">
+                Area:
+                <br />
+                <input type="text" class="form-control" value="@{@area}" disabled="">
+
+            </div>
+
+
+            <br />
+            <br />
+            <br />
+            @{
+
+                using (Html.BeginForm("AdjuntarDocumento", "Bienvenido", new { tipo = 0 }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="">
+                        <div class="fileinput fileinput-new col-lg-12" data-provides="fileinput" id="DIVFILEPDF">
+                            <div class="input-group input-large row">
+                                @*<div class="form-control uneditable-input input-fixed input-medium col-lg-12 col-sm-8" data-trigger="fileinput" style="margin-right: 0.5rem;">
+                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                    <span id="ruta_archivo" class="fileinput-filename">  </span>
+                                </div>*@
+                                <span class="input-group-addon btn default btn-file">
+                                    <span class="fileinput-new small">Seleccionar Archivo PDF</span>
+                                    <span class="fileinput-exists small"> Cambiar </span>
+                                    <input type="file" name="ArchivoAdjuntar" id="ArchivoAdjuntar" accept=".pdf">
+                                </span>&nbsp;
+                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists small" id="PDFRemove" data-dismiss="fileinput"> Eliminar </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="margin-left: -1.5rem;margin-top:0.5rem;">
+                            <button type="submit" class="btn btn-w-m btn-success" onclick=" return GuardarDocumento('ArchivoAdjuntar')">Guardar</button>
+                            <input id="idbotons" onclick="mostrarSubirarcgivo('param1','param2' ,'param3')" class="btn btn-w-m btn-danger hidden" value="Cancelar" type="button" />
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+
+
+            <!-- /input-group -->
+
+        </div>
+        <div class="portlet-body" id="_ListRegistros">
+
+            
+                @{Html.RenderAction("obtieneAdjuntadoos", "Home");}
+            
+        </div>
+
+    </div>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/select2_locale_es.js"></script>
+
+    <script>
+        function GuardarDocumento(idControlArchivo) {
+            var fileInput = document.getElementById(idControlArchivo);
+
+            if (window.FormData !== undefined) {
+
+                if (fileInput.files.length == 0) {
+                    alert('Aviso: Debe seleccionar un archivo.');
+                    return false;
+                }
+
+                var i = 0;
+                var nombreArchivo = fileInput.files[i].name;
+                var extension = nombreArchivo.substring(nombreArchivo.lastIndexOf('.') + 1);
+
+                if (fileInput.files[i].size > 49000000) {
+                    alert('Error: No Acepta Archivos mas de 49MB.');
+                    return false;
+                }
+
+                if (extension.toUpperCase() != 'PDF') {
+                    alert('Error: Solamente acepta archivos PDF. ')
+                    return false;
+                }
+
+            } else {
+                alert("Su explorador no soporta esta funcionalidad, se le recomienda usar un versión más reciente.");
+            }
+            return true;
+        }
+
+        function mostrarSubirarcgivo(clasesubir, clasereemplazo, idboton) {
+            ///alert("1: " + clasesubir + "//" + clasereemplazo + "//" + idboton);
+            $(" ." + clasereemplazo).removeClass("hidden");
+            $(" ." + clasesubir).addClass("hidden");
+            $("#" + idboton).removeClass("hidden");
+            return false;
+        }
+
+        $(document).ready(function () {
+
+        });
+
+
+    </script>
+</body>
+
+</html>

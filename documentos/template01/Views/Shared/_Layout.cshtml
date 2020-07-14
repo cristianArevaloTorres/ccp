@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>ARCHIVOS | 0098802</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Sistema ARCHIIVOS" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @RenderSection("PageLevelHeader", false)
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="~/assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="~/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    @RenderSection("PageLevelHeaderStyles", false)
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    
+    <link href="~/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="~/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+</head>
+<!-- END HEAD -->
+<body class="page-sidebar-closed-hide-logo page-container-bg-solid page-content-white page-header-fixed page-sidebar-fixed page-footer-fixed page-sidebar-reversed">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" />
+                    </a> 
+                    <div class="menu-toggler sidebar-toggler hidden">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+
+                        <!-- END TODO DROPDOWN -->
+                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        @{
+                            string nombrecompleto = (string)(Session["nombre"]) + " " + (string)(Session["apellidoP"]) + " " + (string)(Session["apellidoM"]);
+                        }
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="~/assets/layouts/layout/img/avatar.png" />
+                                <span class="username username-hide-on-mobile">@{ @nombrecompleto}</span>
+                                <i class="fa fa-angle-down hidden"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+
+
+                                <li>
+                                    <a href="">
+                                        <i class="icon-lock"></i> Necesito ayuda
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"> </div>
+
+        <div class="page-container">
+
+            <div class="page-sidebar-wrapper">
+
+                <div class="page-sidebar navbar-collapse collapse">
+
+
+
+
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-light " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+
+                        <li class="sidebar-toggler-wrapper hide">
+                            <div class="sidebar-toggler">
+                                <span></span>
+                            </div>
+                        </li>
+
+                        <li class="nav-item start active open">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-home"></i>
+                                <span class="title">ARCHIVOS</span>
+
+                            </a>
+                      
+                            @{
+                                if ((string)(Session["vtipo"]) == "admin")
+                                {
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/entrada" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Entradas</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/salida" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Salidas</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/Reporte" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Consultar Entradas / Salidas</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/altausuarios" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Alta de Usuarios</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/permisos" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Asignar Permisos</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/sucursales" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Alta de sucursales</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/almacen" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Alta de almacenes</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item start ">
+                                            <a href="~/alimentador05/al/marca" class="nav-link ">
+                                                <i class="fa fa-home"></i>
+                                                <span class="title">Alta de marcas</span>
+                                                <span class="selected"></span>
+
+                                            </a>
+                                        </li>
+                                    </ul>                               
+
+                                }
+                            }
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="~/Login/Login" class="nav-link ">
+                                        <i class="fa fa-home hidden"></i>
+                                        <span class="title">Cerrar Session</span>
+                                        <span class="selected"></span>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="theme-panel hidden hidden-xs hidden-sm">
+                        <div class="toggler"> </div>
+                        <div class="toggler-close"> </div>
+                        <div class="theme-options">
+                            <div class="theme-option theme-colors clearfix">
+                                <span> THEME COLOR </span>
+                                <ul>
+                                    <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
+                                    <li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue"> </li>
+                                    <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
+                                    <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
+                                    <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
+                                    <li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2"> </li>
+                                </ul>
+                            </div>
+                            <div class="theme-option">
+                                <span> Theme Style </span>
+                                <select class="layout-style-option form-control input-sm">
+                                    <option value="square" selected="selected">Square corners</option>
+                                    <option value="rounded">Rounded corners</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Layout </span>
+                                <select class="layout-option form-control input-sm">
+                                    <option value="fluid" selected="selected">Fluid</option>
+                                    <option value="boxed">Boxed</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Header </span>
+                                <select class="page-header-option form-control input-sm">
+                                    <option value="fixed" selected="selected">Fixed</option>
+                                    <option value="default">Default</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Top Menu Dropdown</span>
+                                <select class="page-header-top-dropdown-style-option form-control input-sm">
+                                    <option value="light" selected="selected">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Sidebar Mode</span>
+                                <select class="sidebar-option form-control input-sm">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Sidebar Menu </span>
+                                <select class="sidebar-menu-option form-control input-sm">
+                                    <option value="accordion" selected="selected">Accordion</option>
+                                    <option value="hover">Hover</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Sidebar Style </span>
+                                <select class="sidebar-style-option form-control input-sm">
+                                    <option value="default" selected="selected">Default</option>
+                                    <option value="light">Light</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Sidebar Position </span>
+                                <select class="sidebar-pos-option form-control input-sm">
+                                    <option value="left" selected="selected">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>
+                            <div class="theme-option">
+                                <span> Footer </span>
+                                <select class="page-footer-option form-control input-sm">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-content-wrapper bodyMenuAjax">
+                        @RenderBody()
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="page-footer">
+            <div class="page-footer-inner">
+
+
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    @RenderSection("PageLevelPlugins", false)
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+
+    <script src="~/assets/global/scripts/app.min.js" type="text/javascript"></script>
+
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @RenderSection("PageLevelScripts", false)
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+
+    <script src="~/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+
+
+    <!-- END THEME LAYOUT SCRIPTS -->
+
+    <script>
+        function menuAjax(Area, controller, metodo) {
+            //  alert("entro al guardar1,1")
+            $(' .bodyMenuAjax').html(" ");
+            //  bodyMenuAjax
+            $.ajax({
+                url: "../" + Area + "/" + controller + "/" + metodo,
+                type: 'POST',
+                success: function (result) {
+
+                    console.log("" + result)
+                    $(' .bodyMenuAjax').html(result);
+
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            $('#clickmewow').click(function () {
+                $('#radio1003').attr('checked', 'checked');
+            });
+        })
+    </script>
+
+
+</body>
+</html>

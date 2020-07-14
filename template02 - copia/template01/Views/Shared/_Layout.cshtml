@@ -7,7 +7,7 @@
     <title>ALMACEN | 0098802</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
+    <meta content="Sistema Almacen" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     
@@ -123,27 +123,13 @@
                                 <span class="title">ALMACEN</span>
 
                             </a>
-                            @{
-                                if ((string)(Session["vtipo"]) == "COACH")
-                                {
-                                    <ul class="sub-menu">
-                                        <li class="nav-item start ">
-                                            <a onclick="menuAjax('RendimientoPersonal','Rendimiento','Index')" class="nav-link ">
-                                                <i class="fa fa-home"></i>
-                                                <span class="title">Dar de alta Alimentos</span>
-                                                <span class="selected"></span>
-
-                                            </a>
-                                        </li>
-                                    </ul>
-                                }
-                            }
+                      
                             @{
                                 if ((string)(Session["vtipo"]) == "admin")
                                 {
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/entrada" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Entradas</span>
                                                 <span class="selected"></span>
@@ -153,7 +139,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/salida" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Salidas</span>
                                                 <span class="selected"></span>
@@ -163,7 +149,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/Reporte" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Consultar Entradas / Salidas</span>
                                                 <span class="selected"></span>
@@ -173,7 +159,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/ConsultaClientes" class="nav-link ">
+                                            <a href="~/alimentador05/al/altausuarios" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Alta de Usuarios</span>
                                                 <span class="selected"></span>
@@ -183,7 +169,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/asesoriapersonal" class="nav-link ">
+                                            <a href="~/alimentador05/al/permisos" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Asignar Permisos</span>
                                                 <span class="selected"></span>
@@ -193,7 +179,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/sucursales" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Alta de sucursales</span>
                                                 <span class="selected"></span>
@@ -203,7 +189,7 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/almacen" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Alta de almacenes</span>
                                                 <span class="selected"></span>
@@ -213,24 +199,14 @@
                                     </ul>
                                     <ul class="sub-menu">
                                         <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
+                                            <a href="~/alimentador05/al/marca" class="nav-link ">
                                                 <i class="fa fa-home"></i>
                                                 <span class="title">Alta de marcas</span>
                                                 <span class="selected"></span>
 
                                             </a>
                                         </li>
-                                    </ul>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item start ">
-                                            <a href="~/nutriologo01/nut/Asignarrecetacliente" class="nav-link ">
-                                                <i class="fa fa-home"></i>
-                                                <span class="title">Alta de materiales</span>
-                                                <span class="selected"></span>
-
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    </ul>                               
 
                                 }
                             }

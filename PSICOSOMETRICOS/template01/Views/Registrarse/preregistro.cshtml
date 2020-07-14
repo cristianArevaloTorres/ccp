@@ -1,0 +1,190 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<link href="~/assets/apps/css/registrar.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script src="~/Scripts/jquery-ui.min.js"></script>
+
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h1>Tu Couch Personal<br>Pre-Registro Couch/Nutriologo</h1>
+        <h2>Estamos Cambiando al mundo</h2>
+        <br />
+        <br />
+        <h3>Podras atender a tus clientes atravez de nuestra plataforma de forma online </h3>
+        <br />
+        <h3>Obtendras beneficios al hacer tu pre-registro ahora</h3>
+    </div>
+</div>
+<div class="main">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li><i class="fa fa-circle"></i></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    <div class="portlet light bordered">
+
+        <div class="portlet-body">
+
+            <div class="portlet-body form">
+                <form role="form">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idnombre" placeholder="">
+                                    <label for="form_control_1">¿Cual es su nombre?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idapellidop" placeholder="">
+                                    <label for="form_control_1">¿Cual es su apellido paterno?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input ">
+                                    <input type="text" class="form-control" id="idapellidom" placeholder="">
+                                    <label for="form_control_1">¿Cual es su apellido materno?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group form-md-line-input">
+                                    <input type="number"  class="form-control" id="idedad" placeholder="">
+                                    <label for="form_control_1">¿Cual es su edad?</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group form-md-line-input">
+                                    <input type="text" class="form-control" id="idvrazon" placeholder="">
+                                    <label for="form_control_1">¿Desea escribir una descripcion para que sus clientes la vean?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-md-line-input">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                <input type="text" class="form-control" id="idcorreo" placeholder="">
+                                <label for="form_control_1">¿Cual es su correo electronico?</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="idpass" placeholder="Password">
+                                <label for="form_control_1">Digite su nueva Contraseña</label>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">¿Usted es?</label>
+                            <select class="form-control" id="idvtipo">
+                                <option>Nutriologo</option>
+                                <option>Coach</option>
+                                <option>Usuario</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input class="btn btn-black btn-block "
+                           onclick="Registrar()" id="idterminar"
+                           type="button" value="Registrar" />
+                  
+                </form>
+            </div>
+            <div class="container">
+               
+
+
+
+
+
+
+            </div>
+            <div class="portlet-body" id="_ListRegistros"></div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+
+</div>
+
+<script>
+    function Registrar() {
+
+       
+        var idvtipo = $("#idvtipo").val();
+        var idnombre = $("#idnombre").val();
+        var idapellidop = $("#idapellidop").val();
+        var idapellidom = $("#idapellidom").val();
+        var idcorreo = $("#idcorreo").val();
+        var idusuario = $("#idcorreo").val();
+        var idvrazon = $("#idvrazon").val();
+        var idedad = $("#idedad").val();
+        var idpass = $("#idpass").val();
+     
+        var regex = /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regex.test(idcorreo)) {
+           // alert("correo correcto");
+        }
+        else {
+            alert("su correo:" + idcorreo +" es incorrecto");
+            return false;
+        }
+
+        if (idvtipo == "" ||
+            idnombre == "" ||
+            idapellidop == "" ||
+            idapellidom == "" ||
+            idcorreo == "" ||
+            idusuario == "" ||
+            idvrazon == "" ||
+            idedad == "" ||
+            idpass == ""             
+            ) {
+            alert("Por favor llene todos los campos");
+        }
+        else {
+            console.log("entro al post");
+                    $.post("@Url.Action("Registrar", "Registrarse")",
+                        { 
+                            vtipo: idvtipo,
+                            nombre: idnombre,
+                            apellidop: idapellidop,
+                            apellidom: idapellidom,
+                            correo: idcorreo,
+                            usuario: idcorreo,
+                            vrazon: idvrazon,
+                            edad: idedad,
+                            pass: idpass            
+                        },
+                        function (data) { })
+                              .done(function (response) {
+                                //  recargar()
+                                  location.reload();
+                              })
+                        .fail(function (response) {
+                            location.reload();
+
+                });
+            alert("se completo el Pre-registro de forma exitosa ");
+           
+        }
+        
+      
+        };
+</script>
+  
